@@ -5,7 +5,14 @@ using UnityEngine;
 public class PlayerShip_NJ : InputListenerBase
 {
     public float moveSpeed = 5f;
+    public float projectileSpeed = 10f;
+    public int maxProjectiles = 20;
+    public float projectileLifetime = 3f;
+
     private Rigidbody2D _rb;
+    //private GameObject _projectilePrefab;
+    public GameObject projectilePrefab;
+    private List<GameObject> projectiles = new List<GameObject>();
     private Vector2 _mousePositionAtFrame;
 
     private void Awake()
@@ -15,20 +22,89 @@ public class PlayerShip_NJ : InputListenerBase
         {
             Debug.LogError("Rigidbody2D not found on the GameObject.");
         }
+        InitializeProjectilePool();
     }
-    public override void ProcessMouseButtonDown(int _button)
+    private void Update()
     {
-Debug.Log("ProcessMouseButtonDown");
-        Vector2 rayOrigin = Camera.main.ScreenToWorldPoint(_mousePositionAtFrame);
-        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.zero);
-
-        if (hit.collider != null)
+        //CheckProjectileLifetime();
+        CheckProjectileOutOfBounds();
+    }
+    private void InitializeProjectilePool()
+    {
+        for (int i = 0; i < maxProjectiles; i++)
         {
-            GameObject hitObject = hit.collider.gameObject;
-Debug.Log("Hit " + hitObject.name);
-            Destroy(hitObject);
+            GameObject newProjectile = Instantiate(projectilePrefab, Vector3.zero, Quaternion.identity);
+            newProjectile.SetActive(false);
+            projectiles.Add(newProjectile);
         }
     }
+
+    private void CheckProjectileOutOfBounds()
+    {
+        Vector3 screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+
+        foreach (GameObject projectile in projectiles)
+        {
+            if (projectile.transform.position.x < -screenBounds.x ||
+            projectile.transform.position.x > screenBounds.x ||
+            projectile.transform.position.y < -screenBounds.y ||
+            projectile.transform.position.y > screenBounds.y)
+            {
+                projectile.SetActive(false);
+            }
+        }
+    }
+    private void CheckProjectileLifetime()
+    {
+        foreach (GameObject projectile in projectiles)
+        {
+            // Decrease the remaining lifetime of the projectile
+            //projectile.remainingLifetime -= Time.deltaTime;
+
+            // Check if the projectile's lifetime has expired
+            //if (projectile.remainingLifetime <= 0f)
+            {
+                projectile.SetActive(false);
+            }
+        }
+    }
+
+    public override void ProcessMouseButtonDown(int _button)
+    {
+        if (_button == 0) // tire simple
+        {
+            GameObject newProjectile = GetInactiveProjectile();
+
+            if (newProjectile != null)
+            {
+                newProjectile.transform.position = transform.position;
+
+                Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(new Vector3(_mousePositionAtFrame.x, _mousePositionAtFrame.y, Camera.main.nearClipPlane));
+                Vector2 fireDirection = (mouseWorldPosition - transform.position).normalized;
+
+                Rigidbody2D rb = newProjectile.GetComponent<Rigidbody2D>();
+
+                rb.velocity = fireDirection * projectileSpeed;
+
+                newProjectile.SetActive(true);
+            }
+        }
+        else { 
+            //tire laser
+        }
+    }
+    private GameObject GetInactiveProjectile()
+    {
+        foreach (GameObject projectile in projectiles)
+        {
+            if (!projectile.activeInHierarchy)
+            {
+                return projectile;
+            }
+        }
+        return null;
+    }
+
     public override void ProcessMouseButtonUp(int _button)
     {
         Debug.Log("ProcessMouseButtonUp");

@@ -2,7 +2,12 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    public PlayerShip m_playerShip;
+    public InputListenerBase m_playerShip;
+
+    private void Start()
+    {
+
+    }
 
     // Update is called once per frame
     void Update()

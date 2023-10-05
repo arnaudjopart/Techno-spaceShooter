@@ -504,8 +504,8 @@ GameObject:
   - component: {fileID: 1688967742}
   - component: {fileID: 1688967741}
   - component: {fileID: 1688967744}
-  - component: {fileID: 1688967745}
   - component: {fileID: 1688967746}
+  - component: {fileID: 1688967745}
   m_Layer: 0
   m_Name: Ship_NJ
   m_TagString: Untagged
@@ -621,8 +621,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 8
   projectileSpeed: 20
-  maxProjectiles: 20
   projectileLifetime: 3
+  worldBorder: 5
+  maxProjectiles: 20
   projectilePrefab: {fileID: 3119336818012852599, guid: 5633a5bab4a87d340b590b6783e9590d, type: 3}
 --- !u!61 &1688967746
 BoxCollider2D:

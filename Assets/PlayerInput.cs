@@ -18,6 +18,12 @@ public class PlayerInput : MonoBehaviour
         m_playerShip.ProcessMousePosition(mousePosition);
         m_playerShip.ProcessInputAxes(input);
 
+        if (Input.GetMouseButtonDown(0)) m_playerShip.ProcessMouseButtonDown(0);
+        if (Input.GetMouseButtonDown(1)) m_playerShip.ProcessMouseButtonDown(1);
+        if (Input.GetMouseButtonUp(1)) m_playerShip.ProcessMouseButtonUp(1);
+        if (Input.GetMouseButtonUp(1)) m_playerShip.ProcessMouseButtonUp(1);
+        
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             m_playerShip.ProcessKeyCodeDown(KeyCode.Space);

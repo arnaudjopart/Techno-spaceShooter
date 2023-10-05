@@ -20,7 +20,7 @@ public class PlayerInput : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0)) m_playerShip.ProcessMouseButtonDown(0);
         if (Input.GetMouseButtonDown(1)) m_playerShip.ProcessMouseButtonDown(1);
-        if (Input.GetMouseButtonUp(1)) m_playerShip.ProcessMouseButtonUp(1);
+        if (Input.GetMouseButtonUp(0)) m_playerShip.ProcessMouseButtonUp(0);
         if (Input.GetMouseButtonUp(1)) m_playerShip.ProcessMouseButtonUp(1);
         
 

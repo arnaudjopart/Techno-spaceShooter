@@ -113,13 +113,10 @@ public class PlayerShip_NJ : InputListenerBase
     {
         _mousePositionAtFrame = _mousePosition;
 
-        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(new Vector3(_mousePosition.x, _mousePosition.y, Camera.main.nearClipPlane));
-        Vector2 lookDirection = (mouseWorldPosition - transform.position).normalized;
-
-        float angleOffset = 0f; // Adjust this offset as needed
-        float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg + angleOffset;
-
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        Vector3 mouseWorldPosition = new Vector3(Camera.main.ScreenToWorldPoint(_mousePosition).x,
+            Camera.main.ScreenToWorldPoint(_mousePosition).y, 0) - transform.position;
+        //enlever la position du joueur comparé à 0.0
+        transform.rotation = Quaternion.LookRotation(Vector3.forward, mouseWorldPosition);
     }
     public override void ProcessInputAxes(Vector2 _inputAxes)
     {

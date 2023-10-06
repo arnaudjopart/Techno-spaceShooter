@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class PlayerShip_NJ : InputListenerBase
 {
-    public float moveSpeed = 5f,
-        projectileSpeed = 10f,
+    public float moveSpeed = 8f,
+        projectileSpeed = 20f,
         projectileLifetime = 3f, // Lifetime of projectile in seconds
         worldBorder = 0.2f,
-        fireCooldown = 1.5f; // Cooldown time in seconds
+        fireCooldown = 0.12f; // Cooldown time in seconds
     private float lastFireTime = 0;
     public int maxProjectiles = 20;
     public GameObject projectilePrefab;
@@ -120,9 +120,8 @@ public class PlayerShip_NJ : InputListenerBase
         }
         else if (_button == 1)
         {
-            //tire laser en laissant appuyer ? -> ProcessMouseButtonUp + bool
             tireLaserActif = true;
-            FireContinuousLaser();
+            //FireContinuousLaser();
         }
     }
     private void FireContinuousLaser()
@@ -145,9 +144,7 @@ public class PlayerShip_NJ : InputListenerBase
                 _rb.velocity = fireDirection * projectileSpeed;
             }
         }
-        else {
-            Debug.Log("FireCooldown:" + fireCooldown+ " - Time:" + Time.time + " - LastFireTime:" + lastFireTime);
-        }
+        //else { Debug.Log("FireCooldown:" + fireCooldown+ " - Time:" + Time.time + " - LastFireTime:" + lastFireTime);        }
     }
     //private Projectile GetInactiveProjectile()
     private GameObject GetInactiveProjectile()
@@ -187,7 +184,6 @@ public class PlayerShip_NJ : InputListenerBase
             ShipOutOfBorder();
         }
     }
-
     private void ShipOutOfBorder()
     {
         Vector3 newPosition = transform.position;
@@ -216,13 +212,10 @@ public class PlayerShip_NJ : InputListenerBase
 
         transform.position = newPosition;
     }
-
-
     public override void ProcessKeyCodeDown(KeyCode _keyCode)
     {
         Debug.Log("space down");
     }
-
     public override void ProcessKeyCodeUp(KeyCode _keyCode)
     {
         Debug.Log("space up");

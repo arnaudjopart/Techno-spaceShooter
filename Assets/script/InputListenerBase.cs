@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class InputListenerBase : MonoBehaviour
 {
@@ -27,4 +28,8 @@ public class InputListenerBase : MonoBehaviour
 
     }
 
+    public virtual void ProcessInputAxesRaw(Vector2 _inputRaw)
+    {
+        
+    }
 }

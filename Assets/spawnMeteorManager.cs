@@ -4,15 +4,48 @@ using UnityEngine;
 
 public class spawnMeteorManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    Vector3 spawnpos;
+    private float timer;
+    [SerializeField] int speed;
+    [SerializeField] GameObject[] meteors;
+    private bool peutspawn;
+
+    private void Awake()
     {
-        
+        speed = 1;
+    }
+    private void Start()
+    {
+        peutspawn = true;
+        SpawnMeteor();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (peutspawn)
+        {
+            SpawnMeteor();
+        }
+    }
+    public void SpawnMeteor()
+    {
+        int meteor = Random.Range(0, meteors.Length-1);
+        spawnpos = Random.insideUnitCircle.normalized * 12;
+        if (peutspawn)
+        {
+            Instantiate(meteors[meteor], spawnpos, transform.rotation);
+            StartCoroutine(timeraléatoire());
+        }
+    }
+
+
+    IEnumerator timeraléatoire()
+    {
+        peutspawn = false;
+        timer = Random.Range(0.5f, 2f);
+        yield return new WaitForSeconds(timer);
+        peutspawn = true;
+        Debug.Log("fin"+peutspawn);
     }
 }

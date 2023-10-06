@@ -3,18 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerShip_NJ : InputListenerBase
 {
     public float moveSpeed = 8f,
+        dashSpeed = 20f, // Speed of the dash
+        dashLength = 0.8f,
+
         projectileSpeed = 20f,
-        projectileLifetime = 3f, // Lifetime of Projectile in seconds
-        worldBorder = 0.2f,
         fireCooldown = 0.12f, // Cooldown time in seconds
-        mineLifetime = 10f; // Lifetime of Mine in seconds
+        projectileLifetime = 3f, // Lifetime of Projectile in seconds
+        mineLifetime = 10f, // Lifetime of Mine in seconds
+
+        worldBorder = 0.2f;
+
     private float lastFireTime = 0;
     public int maxProjectiles = 20, nbMinePlace = 0, maxMine = 5;
     public GameObject projectilePrefab, minePrefab;
+
+    public ScoreManager scoreManager;
 
     private Rigidbody2D rb;
     private Vector3 screenBounds;
@@ -22,7 +30,7 @@ public class PlayerShip_NJ : InputListenerBase
     //public Projectile projectilePrefab;
     //private List<Projectile> projectiles = new List<Projectile>();
     private Vector2 _mousePositionAtFrame;
-    private bool tireLaserActif = false;
+    private bool tireLaserActif = false, isDashing = false;
     private GameObject newProjectile;
     Vector3 mouseWorldPosition;
     Vector2 fireDirection;
@@ -38,8 +46,6 @@ public class PlayerShip_NJ : InputListenerBase
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
         screenBounds.x -= worldBorder;
         screenBounds.y -= worldBorder;
-        //screenBoundsXMax = screenBounds.x; screenBoundsYMax = screenBounds.y;
-        //Debug.Log("screenBounds: " + screenBounds); //screenBounds: (8.89, 5.00, -10.00) on 4k in Unity
     }
     private void HandleProjectileCollision(Collider2D other)
     {
@@ -54,6 +60,7 @@ public class PlayerShip_NJ : InputListenerBase
         {
             FireContinuousLaser();
         }
+        //if (Input.GetKeyDown(KeyCode.Space) && !isDashing) { StartCoroutine(Dash()); }
     }
 
     private void InitializeProjectilePool()
@@ -112,13 +119,14 @@ public class PlayerShip_NJ : InputListenerBase
                 newProjectile.transform.position = transform.position; // + transform.forward;
                 newProjectile.transform.rotation = transform.rotation;
                 newProjectile.SetActive(true);
-
+                scoreManager.IncreaseScore(1);
                 mouseWorldPosition = Camera.main.ScreenToWorldPoint(new Vector3(_mousePositionAtFrame.x, _mousePositionAtFrame.y, Camera.main.nearClipPlane));
                 fireDirection = (mouseWorldPosition - newProjectile.transform.position).normalized;
 
                 Rigidbody2D _rb = newProjectile.GetComponent<Rigidbody2D>();
                 _rb.velocity = fireDirection * projectileSpeed;
             }
+
         }
         else if (_button == 1)
         {
@@ -180,10 +188,18 @@ public class PlayerShip_NJ : InputListenerBase
     }
     public override void ProcessInputAxes(Vector2 _inputAxes)
     {
-        if (Math.Abs(transform.position.x) >= 0 && Math.Abs(transform.position.x) <= screenBounds.x && Math.Abs(transform.position.y) >= 0 && Math.Abs(transform.position.y) <= screenBounds.y)
-            rb.velocity = new Vector2(_inputAxes.x * moveSpeed, _inputAxes.y * moveSpeed);
-        else {
-            ShipOutOfBorder();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            StartCoroutine(Dash());
+        }
+        else
+        {
+            if (Math.Abs(transform.position.x) >= 0 && Math.Abs(transform.position.x) <= screenBounds.x && Math.Abs(transform.position.y) >= 0 && Math.Abs(transform.position.y) <= screenBounds.y)
+                rb.velocity = new Vector2(_inputAxes.x * moveSpeed, _inputAxes.y * moveSpeed);
+            else
+            {
+                ShipOutOfBorder();
+            }
         }
     }
     private void ShipOutOfBorder()
@@ -216,12 +232,38 @@ public class PlayerShip_NJ : InputListenerBase
     }
     public override void ProcessKeyCodeDown(KeyCode _keyCode)
     {
-        if (_keyCode == KeyCode.Space && nbMinePlace < maxMine)
+//Debug.Log("_keyCode:" + _keyCode);
+        if (_keyCode == KeyCode.Space)
         {
-            nbMinePlace++;
-            GameObject mine = Instantiate(minePrefab, transform.position, Quaternion.identity);
-            StartCoroutine(DestroyMineAfterDelay(mine, mineLifetime));
+            if (nbMinePlace < maxMine)
+            {
+                nbMinePlace++;
+                GameObject mine = Instantiate(minePrefab, transform.position, Quaternion.identity);
+                StartCoroutine(DestroyMineAfterDelay(mine, mineLifetime));
+            }
         }
+    }
+
+    private IEnumerator Dash() //not working
+    {
+        isDashing = true;
+
+        // Store the ship's original velocity
+        Vector2 originalVelocity = rb.velocity;
+
+        // Calculate the dash direction based on the ship's current input or facing direction
+        Vector2 dashDirection = rb.velocity.normalized;
+
+        // Set the ship's velocity to the dash speed in the dash direction
+        rb.velocity = dashDirection * dashSpeed;
+Debug.Log("originalVelocity:" + originalVelocity + " - rb.velocity:" + rb.velocity);
+        // Wait for the specified dash length
+        yield return new WaitForSeconds(dashLength);
+
+        // Restore the ship's original velocity after the dash
+        rb.velocity = originalVelocity;
+
+        isDashing = false;
     }
     private IEnumerator DestroyMineAfterDelay(GameObject _objectToDestroy, float _lifetime)
     {
@@ -234,7 +276,7 @@ public class PlayerShip_NJ : InputListenerBase
     }
     public override void ProcessKeyCodeUp(KeyCode _keyCode)
     {
-        Debug.Log("space up");
+        //Debug.Log("space up");
     }
 
 }

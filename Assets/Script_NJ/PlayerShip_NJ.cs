@@ -7,12 +7,13 @@ public class PlayerShip_NJ : InputListenerBase
 {
     public float moveSpeed = 8f,
         projectileSpeed = 20f,
-        projectileLifetime = 3f, // Lifetime of projectile in seconds
+        projectileLifetime = 3f, // Lifetime of Projectile in seconds
         worldBorder = 0.2f,
-        fireCooldown = 0.12f; // Cooldown time in seconds
+        fireCooldown = 0.12f, // Cooldown time in seconds
+        mineLifetime = 10f; // Lifetime of Mine in seconds
     private float lastFireTime = 0;
     public int maxProjectiles = 20;
-    public GameObject projectilePrefab;
+    public GameObject projectilePrefab, minePrefab;
 
     private Rigidbody2D rb;
     private Vector3 screenBounds;
@@ -214,7 +215,22 @@ public class PlayerShip_NJ : InputListenerBase
     }
     public override void ProcessKeyCodeDown(KeyCode _keyCode)
     {
-        Debug.Log("space down");
+        if (_keyCode == KeyCode.Space)
+        {
+            GameObject mine = Instantiate(minePrefab, transform.position, Quaternion.identity);
+            StartCoroutine(DestroyMineAfterDelay(mine, mineLifetime));
+        }
+    }
+
+    private IEnumerator DestroyMineAfterDelay(GameObject _objectToDestroy, float _lifetime)
+    {
+Debug.Log("drop mine");
+        yield return new WaitForSeconds(_lifetime);
+        if (_objectToDestroy != null)
+        {
+Debug.Log("destroy mine");
+            Destroy(_objectToDestroy);
+        }
     }
     public override void ProcessKeyCodeUp(KeyCode _keyCode)
     {

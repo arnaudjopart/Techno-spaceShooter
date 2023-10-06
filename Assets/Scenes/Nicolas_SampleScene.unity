@@ -626,6 +626,7 @@ MonoBehaviour:
   fireCooldown: 0.12
   maxProjectiles: 20
   projectilePrefab: {fileID: 3119336818012852599, guid: 5633a5bab4a87d340b590b6783e9590d, type: 3}
+  minePrefab: {fileID: 1329721731385489500, guid: c4972c3cf76d4f849802490d55c72164, type: 3}
 --- !u!61 &1688967746
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6135053828273120883}
   - component: {fileID: 2738397053010998247}
   m_Layer: 0
-  m_Name: laserGreen09_NJ 1
+  m_Name: laserGreen09_NJ
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

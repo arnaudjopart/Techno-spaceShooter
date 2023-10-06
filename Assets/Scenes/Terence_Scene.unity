@@ -569,6 +569,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.98, y: 0.75}
   m_EdgeRadius: 0
+--- !u!114 &1166969565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023895687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf950591995d66c4fb6dfff720f05170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vie: 0
 --- !u!1 &1359836838
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,6 +749,10 @@ PrefabInstance:
       propertyPath: nbAsteroidDetruit
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 3866062897224607338, guid: e55a9a72508b8474286bbee21979a750, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8486076979754386495, guid: e55a9a72508b8474286bbee21979a750, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -793,6 +810,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8863250283300668960, guid: e55a9a72508b8474286bbee21979a750, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1166969564}
+    - targetCorrespondingSourceObject: {fileID: 8863250283300668960, guid: e55a9a72508b8474286bbee21979a750, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1166969565}
   m_SourcePrefab: {fileID: 100100000, guid: e55a9a72508b8474286bbee21979a750, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

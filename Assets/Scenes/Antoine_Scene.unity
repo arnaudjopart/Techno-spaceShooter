@@ -253,11 +253,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6873542633124199485}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &619394800
@@ -477,7 +478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9687a2736f264b42bf3f3c54ed8d610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_playerShip: {fileID: 0}
+  m_playerShip: {fileID: 6873542633124199486}
 --- !u!4 &1643962370
 Transform:
   m_ObjectHideFlags: 0
@@ -503,6 +504,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6873542633124199485}
   - component: {fileID: 5355666131972114394}
+  - component: {fileID: 6873542633124199486}
   m_Layer: 0
   m_Name: ShipTempate
   m_TagString: Untagged
@@ -570,13 +572,30 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2787409275269799403}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.968, y: -0.087, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 519420032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6873542633124199486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2787409275269799403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91632d47f52454141944980572c8cef4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_speed: 10
+  m_rotationSpeed: 500
+  m_boostSpeed: 15
+  m_accelerationTime: 2
+  m_decelerationTime: 0.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -584,5 +603,4 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 1359836842}
-  - {fileID: 6873542633124199485}
   - {fileID: 1643962370}

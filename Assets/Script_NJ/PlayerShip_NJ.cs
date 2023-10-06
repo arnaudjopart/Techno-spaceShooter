@@ -94,20 +94,34 @@ public class PlayerShip_NJ : InputListenerBase
 
             if (newProjectile != null)
             {
-                newProjectile.transform.position = transform.position;
+                newProjectile.transform.position = transform.position; // + transform.forward;
+                newProjectile.transform.rotation = transform.rotation;
                 newProjectile.SetActive(true);
 
                 Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(new Vector3(_mousePositionAtFrame.x, _mousePositionAtFrame.y, Camera.main.nearClipPlane));
                 Vector2 fireDirection = (mouseWorldPosition - newProjectile.transform.position).normalized;
 
                 Rigidbody2D rb = newProjectile.GetComponent<Rigidbody2D>();
-
                 rb.velocity = fireDirection * projectileSpeed;
             }
         }
         else {
             //tire laser en laissant appuyer ? -> ProcessMouseButtonUp + bool
             tireLazerActif = true;
+            GameObject newProjectile = GetInactiveProjectile();
+            if (newProjectile != null)
+            {
+                newProjectile.transform.position = transform.position;
+                newProjectile.transform.rotation = transform.rotation;
+                newProjectile.SetActive(true);
+
+                Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(new Vector3(_mousePositionAtFrame.x, _mousePositionAtFrame.y, 0));
+                Vector2 fireDirection = (mouseWorldPosition - transform.position).normalized;
+
+                Rigidbody2D rb = newProjectile.GetComponent<Rigidbody2D>();
+                rb.velocity = fireDirection * projectileSpeed;
+            }
+
         }
     }
     //private Projectile GetInactiveProjectile()

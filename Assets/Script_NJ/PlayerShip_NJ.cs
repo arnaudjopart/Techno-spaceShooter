@@ -221,14 +221,11 @@ public class PlayerShip_NJ : InputListenerBase
             StartCoroutine(DestroyMineAfterDelay(mine, mineLifetime));
         }
     }
-
     private IEnumerator DestroyMineAfterDelay(GameObject _objectToDestroy, float _lifetime)
     {
-Debug.Log("drop mine");
         yield return new WaitForSeconds(_lifetime);
         if (_objectToDestroy != null)
         {
-Debug.Log("destroy mine");
             Destroy(_objectToDestroy);
         }
     }

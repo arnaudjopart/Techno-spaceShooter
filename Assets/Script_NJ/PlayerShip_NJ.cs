@@ -175,32 +175,42 @@ public class PlayerShip_NJ : InputListenerBase
     }
     public override void ProcessInputAxes(Vector2 _inputAxes)
     {
-//Debug.Log("Ship Position: " + transform.position + " - screenBounds:" + screenBounds);
         if (Math.Abs(transform.position.x) >= 0 && Math.Abs(transform.position.x) <= screenBounds.x && Math.Abs(transform.position.y) >= 0 && Math.Abs(transform.position.y) <= screenBounds.y)
             rb.velocity = new Vector2(_inputAxes.x * moveSpeed, _inputAxes.y * moveSpeed);
         else {
- Debug.Log("Ship Position: " + transform.position);
-            Vector3 newPosition = transform.position;
-
-            if (transform.position.x < -screenBounds.x || transform.position.x > screenBounds.x)
-            {
-                // Inverser la direction en X
-                newPosition.x = Mathf.Clamp(newPosition.x, -screenBounds.x, screenBounds.x);
-                rb.velocity = new Vector2(-rb.velocity.x, rb.velocity.y) * 8;
-Debug.Log("position en X: " + transform.position.x + "- newPosition.x:" + newPosition.x);
-            }
-
-            if (transform.position.y < -screenBounds.y || transform.position.y > screenBounds.y)
-            {
-                // Inverser la direction en Y
-                newPosition.y = Mathf.Clamp(newPosition.y, -screenBounds.y, screenBounds.y);
-                rb.velocity = new Vector2(rb.velocity.x, -rb.velocity.y) * 8;
-Debug.Log("position en Y: " + transform.position.y + "- newPosition.y:" + newPosition.y);
-            }
-            transform.position = newPosition;
-
+            ShipOutOfBorder();
         }
     }
+
+    private void ShipOutOfBorder()
+    {
+        Vector3 newPosition = transform.position;
+
+        if (transform.position.x < -screenBounds.x)
+        {
+            // Si le vaisseau dépasse à gauche, le faites apparaître à droite de l'écran
+            newPosition.x = screenBounds.x;
+        }
+        else if (transform.position.x > screenBounds.x)
+        {
+            // Si le vaisseau dépasse à droite, le faites apparaître à gauche de l'écran
+            newPosition.x = -screenBounds.x;
+        }
+
+        if (transform.position.y < -screenBounds.y)
+        {
+            // Si le vaisseau dépasse en bas, le faites apparaître en haut de l'écran
+            newPosition.y = screenBounds.y;
+        }
+        else if (transform.position.y > screenBounds.y)
+        {
+            // Si le vaisseau dépasse en haut, le faites apparaître en bas de l'écran
+            newPosition.y = -screenBounds.y;
+        }
+
+        transform.position = newPosition;
+    }
+
 
     public override void ProcessKeyCodeDown(KeyCode _keyCode)
     {

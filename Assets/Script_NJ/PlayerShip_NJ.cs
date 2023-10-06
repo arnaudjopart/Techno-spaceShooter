@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerShip_NJ : InputListenerBase
@@ -12,7 +13,7 @@ public class PlayerShip_NJ : InputListenerBase
         fireCooldown = 0.12f, // Cooldown time in seconds
         mineLifetime = 10f; // Lifetime of Mine in seconds
     private float lastFireTime = 0;
-    public int maxProjectiles = 20;
+    public int maxProjectiles = 20, nbMinePlace = 0, maxMine = 5;
     public GameObject projectilePrefab, minePrefab;
 
     private Rigidbody2D rb;
@@ -215,8 +216,9 @@ public class PlayerShip_NJ : InputListenerBase
     }
     public override void ProcessKeyCodeDown(KeyCode _keyCode)
     {
-        if (_keyCode == KeyCode.Space)
+        if (_keyCode == KeyCode.Space && nbMinePlace < maxMine)
         {
+            nbMinePlace++;
             GameObject mine = Instantiate(minePrefab, transform.position, Quaternion.identity);
             StartCoroutine(DestroyMineAfterDelay(mine, mineLifetime));
         }
@@ -227,6 +229,7 @@ public class PlayerShip_NJ : InputListenerBase
         if (_objectToDestroy != null)
         {
             Destroy(_objectToDestroy);
+            nbMinePlace--;
         }
     }
     public override void ProcessKeyCodeUp(KeyCode _keyCode)

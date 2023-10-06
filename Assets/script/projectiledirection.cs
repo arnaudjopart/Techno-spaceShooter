@@ -8,8 +8,7 @@ public class projectiledirection : MonoBehaviour
     [SerializeField]int speed;
     private void Update()
     {
-        transform.Translate((Vector3.up) * Time.deltaTime * speed);
-        
+        transform.Translate((Vector3.up) * Time.deltaTime * speed);        
     }
     
     

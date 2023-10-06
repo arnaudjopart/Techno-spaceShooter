@@ -10,6 +10,7 @@ public class spawnMeteorManager : MonoBehaviour
     [SerializeField] int speed;
     [SerializeField] GameObject[] meteors;
     private bool peutspawn;
+    int nbMeteor;
 
     private void Awake()
     {
@@ -32,9 +33,10 @@ public class spawnMeteorManager : MonoBehaviour
     {
         int meteor = Random.Range(0, meteors.Length-1);
         spawnpos = Random.insideUnitCircle.normalized * 12;
-        if (peutspawn)
+        if (peutspawn && nbMeteor <= 50)
         {
             Instantiate(meteors[meteor], spawnpos, transform.rotation);
+            nbMeteor++;
             StartCoroutine(timeraléatoire());
         }
     }

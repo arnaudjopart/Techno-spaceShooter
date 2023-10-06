@@ -6,14 +6,18 @@ using UnityEngine;
 public class meteordirection : MonoBehaviour
 {
     [SerializeField] float speed;
+    [SerializeField] float rotation=45f;
     Vector3 direction;
-    private void Awake()
+    Vector3 random;
+    public void Awake()
     {
-        direction = -transform.position;
+        random = new Vector3 (Random.Range(-10,10), Random.Range(-5,5));
+        direction = -transform.position + random;
     }
     private void Update()
     {
-        transform.Translate(direction * Time.deltaTime * speed);
+        transform.position+= direction.normalized * Time.deltaTime * speed;
+        transform.Rotate(0,0, rotation *Time.deltaTime);
         
     }
     

@@ -18,8 +18,10 @@ public class PlayerShip_NJ : InputListenerBase
     //public Projectile projectilePrefab;
     //private List<Projectile> projectiles = new List<Projectile>();
     private Vector2 _mousePositionAtFrame;
-    private bool tireLazerActif = false;
+    private bool tireLaserActif = false;
     private GameObject newProjectile;
+    Vector3 mouseWorldPosition;
+    Vector2 fireDirection;
 
     private void Awake()
     {
@@ -41,7 +43,13 @@ public class PlayerShip_NJ : InputListenerBase
     {
         //CheckProjectileLifetime();
         CheckProjectileOutOfBounds();
+
+        if (tireLaserActif)
+        {
+            FireContinuousLaser();
+        }
     }
+
     private void InitializeProjectilePool()
     {
         for (int i = 0; i < maxProjectiles; i++)
@@ -59,10 +67,10 @@ public class PlayerShip_NJ : InputListenerBase
         //foreach (Projectile projectile in projectiles)
         foreach (GameObject projectile in projectiles)
             {
-            if (projectile.transform.position.x < -screenBounds.x ||
+            if (projectile.activeInHierarchy && (projectile.transform.position.x < -screenBounds.x ||
                 projectile.transform.position.x > screenBounds.x ||
                 projectile.transform.position.y < -screenBounds.y ||
-                projectile.transform.position.y > screenBounds.y)
+                projectile.transform.position.y > screenBounds.y))
             {
                 //projectile.DesActive();
                 projectile.SetActive(false);
@@ -99,30 +107,38 @@ public class PlayerShip_NJ : InputListenerBase
                 newProjectile.transform.rotation = transform.rotation;
                 newProjectile.SetActive(true);
 
-                Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(new Vector3(_mousePositionAtFrame.x, _mousePositionAtFrame.y, Camera.main.nearClipPlane));
-                Vector2 fireDirection = (mouseWorldPosition - newProjectile.transform.position).normalized;
+                mouseWorldPosition = Camera.main.ScreenToWorldPoint(new Vector3(_mousePositionAtFrame.x, _mousePositionAtFrame.y, Camera.main.nearClipPlane));
+                fireDirection = (mouseWorldPosition - newProjectile.transform.position).normalized;
 
-                Rigidbody2D rb = newProjectile.GetComponent<Rigidbody2D>();
-                rb.velocity = fireDirection * projectileSpeed;
+                Rigidbody2D _rb = newProjectile.GetComponent<Rigidbody2D>();
+                _rb.velocity = fireDirection * projectileSpeed;
             }
         }
-        else {
+        else if (_button == 1)
+        {
             //tire laser en laissant appuyer ? -> ProcessMouseButtonUp + bool
-            tireLazerActif = true;
-            newProjectile = GetInactiveProjectile();
+            tireLaserActif = true;
+            FireContinuousLaser();
+        }
+    }
+    private void FireContinuousLaser()
+    {
+        if (tireLaserActif)
+        {
+            // Obtenir un projectile inactif
+            GameObject newProjectile = GetInactiveProjectile();
             if (newProjectile != null)
             {
                 newProjectile.transform.position = transform.position;
                 newProjectile.transform.rotation = transform.rotation;
                 newProjectile.SetActive(true);
 
-                Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(new Vector3(_mousePositionAtFrame.x, _mousePositionAtFrame.y, 0));
-                Vector2 fireDirection = (mouseWorldPosition - transform.position).normalized;
+                mouseWorldPosition = Camera.main.ScreenToWorldPoint(new Vector3(_mousePositionAtFrame.x, _mousePositionAtFrame.y, 0));
+                fireDirection = (mouseWorldPosition - transform.position).normalized;
 
-                Rigidbody2D rb = newProjectile.GetComponent<Rigidbody2D>();
-                rb.velocity = fireDirection * projectileSpeed;
+                Rigidbody2D _rb = newProjectile.GetComponent<Rigidbody2D>();
+                _rb.velocity = fireDirection * projectileSpeed;
             }
-
         }
     }
     //private Projectile GetInactiveProjectile()
@@ -142,6 +158,10 @@ public class PlayerShip_NJ : InputListenerBase
     public override void ProcessMouseButtonUp(int _button)
     {
         //Debug.Log("ProcessMouseButtonUp");
+        if (_button == 1)
+        {
+            tireLaserActif = false;
+        }
     }
     public override void ProcessMousePosition(Vector2 _mousePosition)
     {

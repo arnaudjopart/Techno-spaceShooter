@@ -622,7 +622,7 @@ MonoBehaviour:
   moveSpeed: 8
   projectileSpeed: 20
   projectileLifetime: 3
-  worldBorder: 5
+  worldBorder: 0.6
   maxProjectiles: 20
   projectilePrefab: {fileID: 3119336818012852599, guid: 5633a5bab4a87d340b590b6783e9590d, type: 3}
 --- !u!61 &1688967746

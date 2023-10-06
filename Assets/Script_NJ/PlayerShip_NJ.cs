@@ -8,7 +8,7 @@ public class PlayerShip_NJ : InputListenerBase
     public float moveSpeed = 5f,
         projectileSpeed = 10f,
         projectileLifetime = 3f,
-        worldBorder = 5f;
+        worldBorder = 0.6f;
     public int maxProjectiles = 20;
     public GameObject projectilePrefab;
 
@@ -32,6 +32,8 @@ public class PlayerShip_NJ : InputListenerBase
     {
         //if change size of window/screen in game ?
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+        screenBounds.x -= worldBorder;
+        screenBounds.y -= worldBorder;
         //screenBoundsXMax = screenBounds.x; screenBoundsYMax = screenBounds.y;
         //Debug.Log("screenBounds: " + screenBounds); //screenBounds: (8.89, 5.00, -10.00) on 4k in Unity
     }
@@ -177,6 +179,7 @@ public class PlayerShip_NJ : InputListenerBase
         if (Math.Abs(transform.position.x) >= 0 && Math.Abs(transform.position.x) <= screenBounds.x && Math.Abs(transform.position.y) >= 0 && Math.Abs(transform.position.y) <= screenBounds.y)
             rb.velocity = new Vector2(_inputAxes.x * moveSpeed, _inputAxes.y * moveSpeed);
         else {
+ Debug.Log("Ship Position: " + transform.position);
             Vector3 newPosition = transform.position;
 
             if (transform.position.x < -screenBounds.x || transform.position.x > screenBounds.x)
@@ -184,6 +187,7 @@ public class PlayerShip_NJ : InputListenerBase
                 // Inverser la direction en X
                 newPosition.x = Mathf.Clamp(newPosition.x, -screenBounds.x, screenBounds.x);
                 rb.velocity = new Vector2(-rb.velocity.x, rb.velocity.y) * 8;
+Debug.Log("position en X: " + transform.position.x + "- newPosition.x:" + newPosition.x);
             }
 
             if (transform.position.y < -screenBounds.y || transform.position.y > screenBounds.y)
@@ -191,6 +195,7 @@ public class PlayerShip_NJ : InputListenerBase
                 // Inverser la direction en Y
                 newPosition.y = Mathf.Clamp(newPosition.y, -screenBounds.y, screenBounds.y);
                 rb.velocity = new Vector2(rb.velocity.x, -rb.velocity.y) * 8;
+Debug.Log("position en Y: " + transform.position.y + "- newPosition.y:" + newPosition.y);
             }
             transform.position = newPosition;
 

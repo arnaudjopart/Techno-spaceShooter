@@ -7,8 +7,10 @@ public class PlayerShip_NJ : InputListenerBase
 {
     public float moveSpeed = 5f,
         projectileSpeed = 10f,
-        projectileLifetime = 3f,
-        worldBorder = 0.6f;
+        projectileLifetime = 3f, // Lifetime of projectile in seconds
+        worldBorder = 0.2f,
+        fireCooldown = 1.5f; // Cooldown time in seconds
+    private float lastFireTime = 0;
     public int maxProjectiles = 20;
     public GameObject projectilePrefab;
 
@@ -125,10 +127,11 @@ public class PlayerShip_NJ : InputListenerBase
     }
     private void FireContinuousLaser()
     {
-        if (tireLaserActif)
+        // Check if enough time has passed since the last shot
+        if (Time.time - lastFireTime >= fireCooldown)
         {
-            // Obtenir un projectile inactif
-            GameObject newProjectile = GetInactiveProjectile();
+            lastFireTime = Time.time;
+            GameObject newProjectile = GetInactiveProjectile(); // Obtenir un projectile inactif
             if (newProjectile != null)
             {
                 newProjectile.transform.position = transform.position;
@@ -141,6 +144,9 @@ public class PlayerShip_NJ : InputListenerBase
                 Rigidbody2D _rb = newProjectile.GetComponent<Rigidbody2D>();
                 _rb.velocity = fireDirection * projectileSpeed;
             }
+        }
+        else {
+            Debug.Log("FireCooldown:" + fireCooldown+ " - Time:" + Time.time + " - LastFireTime:" + lastFireTime);
         }
     }
     //private Projectile GetInactiveProjectile()

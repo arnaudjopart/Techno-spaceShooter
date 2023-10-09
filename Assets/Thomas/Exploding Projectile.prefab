@@ -105,6 +105,7 @@ MonoBehaviour:
   m_damagePoints: 2
   ExplosionPrefab: {fileID: 5157954470096360423, guid: 2366dcc3449f21c47b61eb710c1a6fd2, type: 3}
   m_explosionDuration: 3
+  m_explosionMaxSize: 3
 --- !u!114 &2185113701807120326
 MonoBehaviour:
   m_ObjectHideFlags: 0

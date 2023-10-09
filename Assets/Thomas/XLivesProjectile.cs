@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class XLivesProjectile : SimpleProjectileLogic
 {
-    [SerializeField] private int m_projectileLives = 3;
+    [SerializeField] protected int m_projectileLives = 3;
 
     public override void ApplyEffect(EnemyBaseClass _target)
     {

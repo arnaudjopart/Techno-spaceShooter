@@ -28,13 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5829180335767311875}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: -9.388, y: 2.241, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!212 &7153405722902028154
 SpriteRenderer:
@@ -164,8 +164,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_lives: 1
   m_speed: 1
-  smallAsteroidPrefab: {fileID: 839688961405014653, guid: f8334220914ae114e844bf6cf834eca4, type: 3}
-  asteroidContainer: {fileID: 0}
+  points: 1
+  smallAsteroidPrefab: {fileID: 839688961405014653, guid: 172a91739ab88c1438e18c4c96e375d3, type: 3}
 --- !u!114 &4728019190978490695
 MonoBehaviour:
   m_ObjectHideFlags: 0

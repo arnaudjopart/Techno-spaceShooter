@@ -6,6 +6,7 @@ public class deplacement : InputListenerBase
 {
     [SerializeField] GameObject projectile;
     [SerializeField] GameObject roquette;
+    [SerializeField] Vector3 projectileOffset;
     [SerializeField] int speed;
     [SerializeField] int nbAsteroidDetruit;
     public override void ProcessMousePosition(Vector2 _mousePosition)
@@ -21,7 +22,7 @@ public class deplacement : InputListenerBase
     public override void ProcessMouseButtonDown(int _button)
     {
         if (_button == 0) { 
-        Instantiate(projectile, transform.position, transform.rotation);
+        Instantiate(projectile, transform.TransformPoint(projectileOffset) , transform.rotation);
         }
         if (_button == 1 && nbAsteroidDetruit > 3) 
         {

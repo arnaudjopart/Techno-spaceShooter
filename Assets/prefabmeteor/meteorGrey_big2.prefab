@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 3774765871954902734}
   - component: {fileID: -5985139133778065847}
   - component: {fileID: -3487324206164463542}
-  - component: {fileID: 2826629501664246140}
+  - component: {fileID: 5821242606017142157}
+  - component: {fileID: 5951123250649219845}
   m_Layer: 0
   m_Name: meteorGrey_big2
   m_TagString: Gros
@@ -141,8 +142,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07b9131e0ed5ca944b14b60b7f0686e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &2826629501664246140
-BoxCollider2D:
+--- !u!114 &5821242606017142157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7455513564810380590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 904e37bc484ceca4cae1d6b52bcc2bfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  liste:
+  - {fileID: 4867974424992624847, guid: e8091698cdf68684e9f975a337d9960b, type: 3}
+  - {fileID: 4263628875862333980, guid: 49db54dbd9c33ef4882f58accea7523e, type: 3}
+--- !u!58 &5951123250649219845
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -174,15 +190,5 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.2, y: 0.98}
-    newSize: {x: 1.2, y: 0.98}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2, y: 0.98}
-  m_EdgeRadius: 0
+  m_Radius: 0.6

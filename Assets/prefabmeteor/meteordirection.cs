@@ -11,16 +11,32 @@ public class meteordirection : MonoBehaviour
     Vector3 random;
     public void Awake()
     {
-        random = new Vector3 (Random.Range(-10,10), Random.Range(-5,5));
-        direction = -transform.position + random;
+        SetRandomDirection();
+        
     }
     private void Update()
     {
         transform.position+= direction.normalized * Time.deltaTime * speed;
         transform.Rotate(0,0, rotation *Time.deltaTime);
+    }
+
+    public void SetDirection(Vector3 _direction)
+    {
+        direction = _direction;
+    }
+
+    public void SetRandomDirection()
+    {
+        random = new Vector3(Random.Range(-10, 10), Random.Range(-5, 5));
+        direction = -transform.position + random;
+    }
+
+    public void SetRandomDirectionAroundThisVector(Vector3 _baseDirection)
+    {
+        random = new Vector3(Random.Range(-10, 10), Random.Range(-5, 5));
+        direction = -transform.position + random;
         
     }
-    
-    
-    
+
+
 }

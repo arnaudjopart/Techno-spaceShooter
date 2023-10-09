@@ -33,15 +33,9 @@ public class PlayerInputChristopheMouseButton : InputListenerBase
         Vector3 direction = Camera.main.ScreenToWorldPoint(clickPosition);
         direction.z = 0;
         direction -= transform.position;
-
-        //Vector3 direction = new Vector3(clickPosition.x, clickPosition.y, 0)/*-transform.position*/;
-        //clickPosition.z = Mathf.Abs(Camera.main.transform.position.y - transform.position.y);
-        //clickPosition = Camera.main.ScreenToWorldPoint(clickPosition);
-        //transform.LookAt(clickPosition);
-
-        //float angle = Mathf.Atan2(Camera.main.ScreenToWorldPoint(direction).y, Camera.main.ScreenToWorldPoint(direction).x) * Mathf.Rad2Deg;
-        //transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-        transform.rotation = Quaternion.LookRotation(Vector3.forward, direction/*Camera.main.ScreenToWorldPoint(direction)-transform.rotation.eulerAngles*/);
+        transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
     }
+
+    
+
 }

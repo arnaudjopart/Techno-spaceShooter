@@ -153,8 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Asteroids: {fileID: 2278338187055817716, guid: bff8faa54b94fb84f9f5fc99b85a667c, type: 3}
-  radius: 12
-  delayMax: 2
+  radius: 10.6
+  delayMax: 4
   StartingNumberOfAsteroids: 5
 --- !u!4 &452478606
 Transform:

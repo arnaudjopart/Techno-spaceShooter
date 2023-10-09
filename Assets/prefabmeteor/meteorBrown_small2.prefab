@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 6311526147952115371}
   - component: {fileID: 8839201311477134439}
   - component: {fileID: 2510934455900191963}
-  - component: {fileID: 5726245800279821723}
+  - component: {fileID: -1626317795590762729}
+  - component: {fileID: 5834658784096382264}
   m_Layer: 0
   m_Name: meteorBrown_small2
   m_TagString: Petit
@@ -141,8 +142,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07b9131e0ed5ca944b14b60b7f0686e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &5726245800279821723
-BoxCollider2D:
+--- !u!114 &-1626317795590762729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4298662464346640786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 904e37bc484ceca4cae1d6b52bcc2bfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  liste: []
+--- !u!58 &5834658784096382264
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -174,15 +188,5 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.29, y: 0.26}
-    newSize: {x: 0.29, y: 0.26}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.29, y: 0.26}
-  m_EdgeRadius: 0
+  m_Radius: 0.145

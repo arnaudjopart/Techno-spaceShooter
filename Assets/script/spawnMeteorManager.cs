@@ -10,7 +10,7 @@ public class spawnMeteorManager : MonoBehaviour
     [SerializeField] int speed;
     [SerializeField] GameObject[] meteors;
     private bool peutspawn;
-    int nbMeteor;
+    int nbmeteor;
 
     private void Awake()
     {
@@ -22,10 +22,13 @@ public class spawnMeteorManager : MonoBehaviour
         SpawnMeteor();
     }
 
-    private void Update()
+    public void Update()
     {
+        nbmeteor = GameObject.FindObjectsOfType<spawnMeteorManager>().Length;
+
         if (peutspawn)
         {
+
             SpawnMeteor();
         }
     }
@@ -33,10 +36,11 @@ public class spawnMeteorManager : MonoBehaviour
     {
         int meteor = Random.Range(0, meteors.Length-1);
         spawnpos = Random.insideUnitCircle.normalized * 12;
-        if (peutspawn && nbMeteor <= 50)
+        if (peutspawn && nbmeteor <= 50) 
         {
-            Instantiate(meteors[meteor], spawnpos, transform.rotation);
-            nbMeteor++;
+            var instance = Instantiate(meteors[meteor], spawnpos, transform.rotation);
+            instance.GetComponent<meteordirection>().SetRandomDirection();
+            nbmeteor++;
             StartCoroutine(timeraléatoire());
         }
     }
@@ -48,6 +52,5 @@ public class spawnMeteorManager : MonoBehaviour
         timer = Random.Range(0.5f, 2f);
         yield return new WaitForSeconds(timer);
         peutspawn = true;
-        Debug.Log("fin"+peutspawn);
     }
 }

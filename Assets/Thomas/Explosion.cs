@@ -4,24 +4,34 @@ using UnityEngine;
 
 public class Explosion : SimpleProjectileLogic
 {
-    private float timer;
     [HideInInspector] public float explosionDuration;
-    public int m_explosionDamage;
+    [HideInInspector] public int explosionDamage;
+    [HideInInspector] public float size;
+    private Vector3 scaleModifier;
+    private float sizeChangeStep;
 
-    public void Start()
+    private IEnumerator Start()
     {
-        timer = 0;
-    }
-
-    private void Update()
-    {
-        timer += Time.deltaTime;
-        if (timer >= explosionDuration)
-            Destroy(gameObject);
+        scaleModifier = new Vector3((size - transform.localScale.x) / 5, (size - transform.localScale.y) / 5, 0);
+        sizeChangeStep = explosionDuration / 11;
+        yield return ChangeScale();
     }
 
     public override void ApplyEffect(EnemyBaseClass _target)
     {
-        _target.GetComponent<EnemyBaseClass>().TakeDamage(m_explosionDamage);
+        _target.GetComponent<EnemyBaseClass>().TakeDamage(explosionDamage);
+    }
+
+    IEnumerator ChangeScale()
+    {
+        for (int i = 0; i < 10; i++) 
+        { 
+            yield return new WaitForSeconds(sizeChangeStep);
+            if (i == 5)
+                scaleModifier = -scaleModifier;
+            transform.localScale += scaleModifier;
+        }
+        yield return new WaitForSeconds(sizeChangeStep);
+        Destroy(gameObject);
     }
 }

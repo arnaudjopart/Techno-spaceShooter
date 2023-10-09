@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 5355666132618787269}
   - component: {fileID: 1738661542653179202}
   - component: {fileID: 4744029906726206718}
+  - component: {fileID: -5184435588294167037}
   m_Layer: 0
-  m_Name: Ship
+  m_Name: Ship_Arnaud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,3 +128,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_impulse: 2
   m_rotationSpeed: 250
+--- !u!114 &-5184435588294167037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2787409275965219828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c4e88f86ad11e408dcc05f1467e534, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ghostPrefab: {fileID: 4988941194256069592, guid: 5f039d98b31d80b479fe88b47308441a, type: 3}

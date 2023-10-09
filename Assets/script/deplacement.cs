@@ -1,14 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class deplacement : InputListenerBase
 {
-    [SerializeField] GameObject projectile;
-    [SerializeField] GameObject roquette;
-    [SerializeField] Vector3 projectileOffset;
     [SerializeField] int speed;
     [SerializeField] int nbAsteroidDetruit;
+
+    private WeaponSystemBase m_weaponSystem;
+
+    private void Awake()
+    {
+        m_weaponSystem = GetComponent<WeaponSystemBase>();
+    }
+
     public override void ProcessMousePosition(Vector2 _mousePosition)
     {
         Vector3 direction = new Vector3(Camera.main.ScreenToWorldPoint(_mousePosition).x,Camera.main.ScreenToWorldPoint(_mousePosition).y, 0)- transform.position;
@@ -21,13 +27,22 @@ public class deplacement : InputListenerBase
     }
     public override void ProcessMouseButtonDown(int _button)
     {
+        
         if (_button == 0) { 
-        Instantiate(projectile, transform.TransformPoint(projectileOffset) , transform.rotation);
+            m_weaponSystem.ProcessShootPrimaryWeapon();
+            
         }
         if (_button == 1 && nbAsteroidDetruit > 3) 
         {
+            m_weaponSystem.ProcessShootSecondaryWeapon();
             nbAsteroidDetruit -= 3;
-            Instantiate(roquette, transform.position, transform.rotation);
+            
         }
     }
+}
+
+internal abstract class WeaponSystemBase : MonoBehaviour
+{
+    public abstract void ProcessShootPrimaryWeapon();
+    public abstract void ProcessShootSecondaryWeapon();
 }

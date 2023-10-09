@@ -49,5 +49,11 @@ public class EnemyBaseClass : MonoBehaviour, IMovable
         m_lives -= m_damagePoints;
     }
 
+    internal virtual void ChangeDirection()
+    {
+        m_speed = -m_speed;
+    }
+
+
 
 }

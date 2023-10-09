@@ -1,3 +1,5 @@
+using System;
+using TMPro;
 using UnityEngine;
 
 public class ShipController : InputListenerBase
@@ -13,10 +15,20 @@ public class ShipController : InputListenerBase
     private Vector2 bounds;
     [SerializeField] private GameObject[] ghostShips;
     [SerializeField] private Transform shipParent;
+    [Header("Game Over Settings")]
+    [SerializeField] private GameObject gameOverPanel;
+    [Header("Score Settings")]
+    [SerializeField] private TMP_Text scoreTxt;
+    public int Score { get; private set; } = 0;
+
+    [Header("Lives Settings")]
+    [SerializeField] private TMP_Text livesTxt;
+    public int Lives { get; private set; } = 3;
 
     private void Start()
     {
         this.bounds = new Vector2(Camera.main.aspect * Camera.main.orthographicSize, Camera.main.orthographicSize);
+        Time.timeScale = 1f;
         InitGhostShips();
     }
 
@@ -72,5 +84,34 @@ public class ShipController : InputListenerBase
     private bool IsOutsideYBounds()
     {
         return this.transform.position.y < -bounds.y || this.transform.position.y > bounds.y;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Destroy(collision.gameObject);
+        Lives -= 1;
+        this.livesTxt.text = $"{Lives}";
+        if (Lives <= 0)
+        {
+            GameOver();
+        }
+    }
+
+    private void GameOver()
+    {
+        this.gameOverPanel.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void IncreaseScore(int points)
+    {
+        Score += points;
+        this.scoreTxt.text = $"{Score}";
+    }
+
+    public void ResetScore()
+    {
+        Score = 0;
+        this.scoreTxt.text = "0";
     }
 }

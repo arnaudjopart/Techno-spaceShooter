@@ -3,6 +3,8 @@ using UnityEngine;
 public class DefaultAsteroid : EnemyBaseClass
 {
     private float lifeTime = 0f;
+    [Range(1, 100)]
+    [SerializeField] private int points = 1;
 
     private void Start()
     {
@@ -15,6 +17,7 @@ public class DefaultAsteroid : EnemyBaseClass
         base.TakeDamage(m_damagePoints);
         if (m_lives <= 0)
         {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<ShipController>().IncreaseScore(this.points);
             this.gameObject.SetActive(false);
         }
     }

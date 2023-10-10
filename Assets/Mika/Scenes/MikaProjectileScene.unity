@@ -185,6 +185,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_lives: 1
   m_speed: 1
+  maxLifeTime: 20
+  points: 1
 --- !u!50 &33338654
 Rigidbody2D:
   serializedVersion: 4
@@ -346,6 +348,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_lives: 1
   m_speed: 1
+  maxLifeTime: 20
+  points: 1
 --- !u!50 &104289720
 Rigidbody2D:
   serializedVersion: 4
@@ -570,6 +574,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_lives: 1
   m_speed: 1
+  maxLifeTime: 20
+  points: 1
 --- !u!50 &447958477
 Rigidbody2D:
   serializedVersion: 4
@@ -694,7 +700,6 @@ GameObject:
   m_Component:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
-  - component: {fileID: 519420029}
   - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
@@ -703,14 +708,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &519420029
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
 --- !u!114 &519420030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1020,6 +1017,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_lives: 1
   m_speed: 1
+  maxLifeTime: 20
+  points: 1
 --- !u!50 &891682138
 Rigidbody2D:
   serializedVersion: 4
@@ -1211,6 +1210,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_lives: 1
   m_speed: 1
+  maxLifeTime: 20
+  points: 1
 --- !u!50 &1052999058
 Rigidbody2D:
   serializedVersion: 4
@@ -1493,6 +1494,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_lives: 1
   m_speed: 1
+  maxLifeTime: 20
+  points: 1
 --- !u!50 &1472710705
 Rigidbody2D:
   serializedVersion: 4
@@ -1709,6 +1712,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_lives: 1
   m_speed: 1
+  maxLifeTime: 20
+  points: 1
 --- !u!50 &2125662557
 Rigidbody2D:
   serializedVersion: 4
@@ -1837,6 +1842,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_lives: 4
   m_speed: 0.4
+  maxLifeTime: 20
+  points: 1
   smallAsteroidPrefab: {fileID: 1458167018991908628, guid: 373ec56cbf950b449a311675ca8a2532, type: 3}
 --- !u!212 &208444501911767283
 SpriteRenderer:
@@ -17493,6 +17500,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_lives: 1
   m_speed: 1
+  maxLifeTime: 20
+  points: 1
 --- !u!4 &7641273924187152678
 Transform:
   m_ObjectHideFlags: 0

@@ -11,9 +11,9 @@ public class ParticleLaserCollision : MonoBehaviour
 
     private void OnParticleCollision(GameObject collision)
     {
-        if (collision.GetComponent<EnemyBaseClass>() != null)
+        if (collision.GetComponent<Enemy>() != null)
         {
-            m_projectileLogic.ApplyEffect(collision.GetComponent<EnemyBaseClass>());
+            m_projectileLogic.ApplyEffect(collision.GetComponent<Enemy>());
         }
     }
 }

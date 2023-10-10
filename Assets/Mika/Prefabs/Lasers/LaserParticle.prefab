@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1264966793726229713}
   - component: {fileID: 7711420783711043121}
   - component: {fileID: 1403121131804720916}
-  - component: {fileID: 1347396707799890759}
+  - component: {fileID: 4377613716171365957}
   m_Layer: 6
   m_Name: LaserParticle
   m_TagString: Projectile
@@ -4902,7 +4902,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f549be25bf7ce2a4dbd28102ba50c039, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1347396707799890759
+--- !u!114 &4377613716171365957
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4911,7 +4911,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 5519766045237600737}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dff74fbf552ee148a6a9194833d4b19, type: 3}
+  m_Script: {fileID: 11500000, guid: fc06413d5392a604aa3f500a9ce08974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_speed: 1
+  m_damagePoints: 1

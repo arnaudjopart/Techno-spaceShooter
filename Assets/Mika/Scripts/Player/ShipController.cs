@@ -11,6 +11,10 @@ namespace Mika
         [Header("Projectile Settings")]
         [SerializeField] private GameObject projectilePrefab;
 
+        [Header("Sound Settings")]
+        [SerializeField] private AudioClip playerAttackClip;
+        private AudioSource audioSource;
+
         [Header("Ghost Ship Settings")]
         private Vector2 bounds;
         [SerializeField] private GameObject[] ghostShips;
@@ -21,6 +25,7 @@ namespace Mika
         {
             bounds = new Vector2(Camera.main.aspect * Camera.main.orthographicSize, Camera.main.orthographicSize);
             Time.timeScale = 1f;
+            this.audioSource = GetComponent<AudioSource>();
             InitGhostShips();
         }
 
@@ -50,6 +55,7 @@ namespace Mika
         {
             if (_keyCode == KeyCode.Space)
             {
+                this.audioSource.PlayOneShot(this.playerAttackClip);
                 Vector3 offset = transform.up;
                 offset *= 0.5f;
                 Vector3 spawnPos = transform.position + offset;

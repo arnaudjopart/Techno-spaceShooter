@@ -1,18 +1,25 @@
+using System;
 using UnityEngine;
 
 namespace Mika
 {
+    [RequireComponent(typeof(AudioSource))]
     public class Enemy : EnemyBaseClass
     {
         [SerializeField] private float maxLifeTime = 20f;
-        private float lifeTime = 0f;
+        protected float lifeTime = 0f;
         [Range(1, 100)]
         [SerializeField] private int points = 1;
+        [Range(1, 100)]
+        [SerializeField] private int maxLife = 1;
+        public bool IsAlive { get => m_lives > 0 && this.lifeTime < this.maxLifeTime; }
+        protected AudioSource audioSource;
 
-        private void Start()
+        protected virtual void Awake()
         {
-            m_lives = Mathf.Max(1, m_lives);
-            lifeTime = 0f;
+            ResetLife();
+            ResetLifetime();
+            this.audioSource = GetComponent<AudioSource>();
         }
 
         internal override void TakeDamage(int m_damagePoints)
@@ -42,6 +49,11 @@ namespace Mika
         public void ResetLifetime()
         {
             lifeTime = 0f;
+        }
+
+        public void ResetLife()
+        {
+            m_lives = Math.Max(1, this.maxLife);
         }
 
         public virtual int GetPointValue()

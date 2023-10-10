@@ -13,6 +13,7 @@ namespace Mika
             if (Instance == null)
             {
                 Instance = this;
+                Application.targetFrameRate = 60;
             }
             else if (Instance != this)
             {

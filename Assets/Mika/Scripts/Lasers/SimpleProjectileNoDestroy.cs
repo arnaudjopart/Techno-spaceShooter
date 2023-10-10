@@ -1,11 +1,14 @@
 using UnityEngine;
 
-public class SimpleProjectileNoDestroy : ProjectileLogicBaseClass
+namespace Mika
 {
-    [SerializeField] protected int m_damagePoints;
-
-    public override void ApplyEffect(Enemy _target)
+    public class SimpleProjectileNoDestroy : ProjectileLogicBaseClass
     {
-        _target.GetComponent<Enemy>().TakeDamage(m_damagePoints);
+        [SerializeField] protected int m_damagePoints;
+
+        public override void ApplyEffect(Enemy _target)
+        {
+            _target.GetComponent<Enemy>().TakeDamage(m_damagePoints);
+        }
     }
 }

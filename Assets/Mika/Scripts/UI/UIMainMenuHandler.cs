@@ -2,50 +2,53 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-[DefaultExecutionOrder(1000)]
-public class UIMainMenuHandler : MonoBehaviour
+namespace Mika
 {
-    [SerializeField] private GameObject layoutMain, layoutOptions;
-    [SerializeField] private Slider masterSlider, musicSlider, ambientSlider, playerSlider, hostileSlider;
-    [SerializeField] private Toggle toggleVolume;
-
-    private void Start()
+    [DefaultExecutionOrder(1000)]
+    public class UIMainMenuHandler : MonoBehaviour
     {
-        this.masterSlider.value = SoundManager.Instance.GetMasterVolume();
-        this.musicSlider.value = SoundManager.Instance.GetMusicVolume();
-        this.ambientSlider.value = SoundManager.Instance.GetAmbientVolume();
-        this.playerSlider.value = SoundManager.Instance.GetPlayerVolume();
-        this.hostileSlider.value = SoundManager.Instance.GetHostileVolume();
-        this.toggleVolume.isOn = SoundManager.Instance.IsVolumeActive();
-    }
+        [SerializeField] private GameObject layoutMain, layoutOptions;
+        [SerializeField] private Slider masterSlider, musicSlider, ambientSlider, playerSlider, hostileSlider;
+        [SerializeField] private Toggle toggleVolume;
 
-    public void LoadInputScene()
-    {
-        SceneManager.LoadScene("MikaInput_Scene");
-    }
+        private void Start()
+        {
+            masterSlider.value = SoundManager.Instance.GetMasterVolume();
+            musicSlider.value = SoundManager.Instance.GetMusicVolume();
+            ambientSlider.value = SoundManager.Instance.GetAmbientVolume();
+            playerSlider.value = SoundManager.Instance.GetPlayerVolume();
+            hostileSlider.value = SoundManager.Instance.GetHostileVolume();
+            toggleVolume.isOn = SoundManager.Instance.IsVolumeActive();
+        }
 
-    public void LoadProjectileScene()
-    {
-        SceneManager.LoadScene("MikaProjectileScene");
-    }
+        public void LoadInputScene()
+        {
+            SceneManager.LoadScene("MikaInput_Scene");
+        }
 
-    public void QuitGame()
-    {
+        public void LoadProjectileScene()
+        {
+            SceneManager.LoadScene("MikaProjectileScene");
+        }
+
+        public void QuitGame()
+        {
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
+            UnityEditor.EditorApplication.isPlaying = false;
 #endif
-        Application.Quit();
-    }
+            Application.Quit();
+        }
 
-    public void OpenOptionsMenu()
-    {
-        this.layoutMain.SetActive(false);
-        this.layoutOptions.SetActive(true);
-    }
+        public void OpenOptionsMenu()
+        {
+            layoutMain.SetActive(false);
+            layoutOptions.SetActive(true);
+        }
 
-    public void BackToMainMenu()
-    {
-        this.layoutOptions.SetActive(false);
-        this.layoutMain.SetActive(true);
+        public void BackToMainMenu()
+        {
+            layoutOptions.SetActive(false);
+            layoutMain.SetActive(true);
+        }
     }
 }

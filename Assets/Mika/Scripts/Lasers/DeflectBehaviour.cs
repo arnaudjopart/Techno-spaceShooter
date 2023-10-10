@@ -1,11 +1,14 @@
 using UnityEngine;
 
-public class DeflectBehaviour : ProjectileLogicBaseClass
+namespace Mika
 {
-    [SerializeField] private float reflectStrength;
-    public override void ApplyEffect(Enemy _target)
+    public class DeflectBehaviour : ProjectileLogicBaseClass
     {
-        _target.GetComponent<Rigidbody2D>().AddForce(this.transform.up * this.reflectStrength, ForceMode2D.Impulse);
-        Destroy(this.gameObject);
+        [SerializeField] private float reflectStrength;
+        public override void ApplyEffect(Enemy _target)
+        {
+            _target.GetComponent<Rigidbody2D>().AddForce(transform.up * reflectStrength, ForceMode2D.Impulse);
+            Destroy(gameObject);
+        }
     }
 }

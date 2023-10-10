@@ -1304,6 +1304,7 @@ MonoBehaviour:
   - {fileID: 1458167018991908628, guid: 373ec56cbf950b449a311675ca8a2532, type: 3}
   - {fileID: 4298662464346640786, guid: 0b4767767cc52c642935364941f4f146, type: 3}
   - {fileID: 8619275650118808469, guid: 9e138e108ea818e4b98b6b5fcb841f98, type: 3}
+  - {fileID: 7434170014083389511, guid: 3c683616eec80704fbc8b0812a904da9, type: 3}
   asteroidGrayPrefabs:
   - {fileID: 8582500377534403166, guid: 019038f0fc7c41849b934fadf1c8b10d, type: 3}
   - {fileID: 7455513564810380590, guid: 68f890d46d3420542bb409fdba08c9c4, type: 3}
@@ -1312,6 +1313,7 @@ MonoBehaviour:
   - {fileID: 6275952170836928255, guid: b83ea901fdd3bed4aa79890c0e640c43, type: 3}
   - {fileID: 6500342517958007045, guid: a557844ba8e53974c9548cc3159eb70d, type: 3}
   - {fileID: 8619275650118808469, guid: db15061d0679dbf49b08a7ad22866fea, type: 3}
+  - {fileID: 7434170014083389511, guid: 3c683616eec80704fbc8b0812a904da9, type: 3}
   asteroidModel: 0
 --- !u!1 &1085327022
 GameObject:
@@ -2715,7 +2717,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4559910289716843792}
+  - {fileID: 4559910289716843787}
   - {fileID: 6020038851970729105}
   - {fileID: 1665922266}
   - {fileID: 1324767523}
@@ -3312,6 +3314,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81f764581a5d5d9419571ca161e38c4a, type: 3}
+--- !u!4 &4559910289716843787 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6856031763256564411, guid: 81f764581a5d5d9419571ca161e38c4a, type: 3}
+  m_PrefabInstance: {fileID: 4559910289716843786}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &4559910289716843788 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6359621890346096091, guid: 81f764581a5d5d9419571ca161e38c4a, type: 3}
@@ -3323,11 +3330,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48021c7a50efd394380c95ea33cca735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &4559910289716843792 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6856031763256564411, guid: 81f764581a5d5d9419571ca161e38c4a, type: 3}
-  m_PrefabInstance: {fileID: 4559910289716843786}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6020038851970729105
 Transform:
   m_ObjectHideFlags: 0

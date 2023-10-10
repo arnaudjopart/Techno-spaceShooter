@@ -1,8 +1,11 @@
-public class BehaviourDestroy : ProjectileLogicBaseClass
+namespace Mika
 {
-    public override void ApplyEffect(Enemy _target)
+    public class BehaviourDestroy : ProjectileLogicBaseClass
     {
-        Destroy(this.gameObject);
-        _target.gameObject.SetActive(false);
+        public override void ApplyEffect(Enemy _target)
+        {
+            Destroy(gameObject);
+            _target.gameObject.SetActive(false);
+        }
     }
 }

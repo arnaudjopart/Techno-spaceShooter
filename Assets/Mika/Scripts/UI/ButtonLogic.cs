@@ -2,25 +2,28 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ButtonLogic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+namespace Mika
 {
-    [SerializeField] private Color hightlightColor;
-    private TMP_Text text;
-    private Color initialColor;
-
-    private void Awake()
+    public class ButtonLogic : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        this.text = GetComponentInChildren<TMP_Text>();
-        this.initialColor = this.text.color;
-    }
+        [SerializeField] private Color hightlightColor;
+        private TMP_Text text;
+        private Color initialColor;
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        this.text.color = this.hightlightColor;
-    }
+        private void Awake()
+        {
+            text = GetComponentInChildren<TMP_Text>();
+            initialColor = text.color;
+        }
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        this.text.color = this.initialColor;
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            text.color = hightlightColor;
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            text.color = initialColor;
+        }
     }
 }

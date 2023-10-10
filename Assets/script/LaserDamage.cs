@@ -5,13 +5,24 @@ using UnityEngine;
 public class LaserDamage : MonoBehaviour
 {
     public GameObject[] liste;
-    
+    [SerializeField] AudioClip boomSound;
+    AudioSource audioBoom;
+    SpriteRenderer spriteRenderer;
+
+    private void Awake()
+    {
+        audioBoom = GetComponent<AudioSource>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
     // Start is called before the first frame update
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Laser"))
+        if (collision.gameObject.CompareTag("Laser") || collision.gameObject.CompareTag("laserUFO"))
         {
+            audioBoom.PlayOneShot(boomSound);
             Destroy(collision.gameObject);
+            
             GetComponent<CircleCollider2D>().enabled = false;
                 if (liste.Length > 0 )
             {
@@ -21,7 +32,8 @@ public class LaserDamage : MonoBehaviour
                     Instantiate(liste[asteroide], transform.position + new Vector3(Random.Range (0,0.5f),Random.Range(0,0.5f),0), Quaternion.identity);
                 }
             }
-            Destroy(this.gameObject);
+            spriteRenderer.enabled = false;
+            Destroy(this.gameObject,0.5f);
         }
     }
    /* private void OnTriggerEnter2D(Collider2D collision)

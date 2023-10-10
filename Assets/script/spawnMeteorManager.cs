@@ -6,11 +6,15 @@ public class spawnMeteorManager : MonoBehaviour
 {
 
     Vector3 spawnpos;
+    Vector3 spawnPosUfo;
     private float timer;
     [SerializeField] int speed;
     [SerializeField] GameObject[] meteors;
     private bool peutspawn;
     int nbmeteor;
+    [SerializeField] GameObject ufo;
+    private bool peutSpawnUfo;
+    private int nbUfo;
 
     private void Awake()
     {
@@ -18,6 +22,7 @@ public class spawnMeteorManager : MonoBehaviour
     }
     private void Start()
     {
+        peutSpawnUfo = true;
         peutspawn = true;
         SpawnMeteor();
     }
@@ -25,7 +30,10 @@ public class spawnMeteorManager : MonoBehaviour
     public void Update()
     {
         nbmeteor = GameObject.FindObjectsOfType<spawnMeteorManager>().Length;
-
+        if (peutSpawnUfo)
+        {
+            SpawnUfo();
+        }
         if (peutspawn)
         {
 
@@ -34,14 +42,26 @@ public class spawnMeteorManager : MonoBehaviour
     }
     public void SpawnMeteor()
     {
-        int meteor = Random.Range(0, meteors.Length-1);
+        int meteor = Random.Range(0, meteors.Length - 1);
         spawnpos = Random.insideUnitCircle.normalized * 12;
-        if (peutspawn && nbmeteor <= 50) 
+        if (peutspawn && nbmeteor <= 50)
         {
             var instance = Instantiate(meteors[meteor], spawnpos, transform.rotation);
             instance.GetComponent<meteordirection>().SetRandomDirection();
             nbmeteor++;
             StartCoroutine(timeraléatoire());
+        }
+    }
+
+    public void SpawnUfo()
+    {
+        spawnPosUfo = Random.insideUnitCircle.normalized * 12;
+        if (peutSpawnUfo && nbUfo == 0)
+        {
+            var instanceUfo = Instantiate(ufo,spawnPosUfo, transform.rotation);
+            instanceUfo.GetComponent<meteordirection>().SetRandomDirection();
+            nbUfo++;
+            StartCoroutine(timerUfo());
         }
     }
 
@@ -52,5 +72,13 @@ public class spawnMeteorManager : MonoBehaviour
         timer = Random.Range(0.5f, 2f);
         yield return new WaitForSeconds(timer);
         peutspawn = true;
+    }
+
+    IEnumerator timerUfo()
+    {
+        peutSpawnUfo = false;
+        timer = Random.Range(5,10);
+        yield return new WaitForSeconds(timer);
+        peutSpawnUfo = true;
     }
 }

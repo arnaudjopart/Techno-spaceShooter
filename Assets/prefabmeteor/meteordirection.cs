@@ -30,6 +30,11 @@ public class meteordirection : MonoBehaviour
         random = new Vector3(Random.Range(-10, 10), Random.Range(-5, 5));
         direction = -transform.position + random;
     }
+    public void SetRandomDirectionUfo()
+    {
+        random = new Vector3(Random.Range(-10, 10), Random.Range(-10, 10));
+        direction = -transform.position + random;
+    }
 
     public void SetRandomDirectionAroundThisVector(Vector3 _baseDirection)
     {

@@ -5,7 +5,6 @@ using UnityEngine;
 public class AsteroidsSpawnerPauline : MonoBehaviour
 {
     [SerializeField] GameObject[] meteors;
-    private GameObject[] myInstantiatedGameObjects;
     private float spawnRate;
     Vector3 spawnDirection;
     bool canSpawn;

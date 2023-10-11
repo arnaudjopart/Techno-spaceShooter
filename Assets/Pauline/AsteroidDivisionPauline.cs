@@ -9,13 +9,14 @@ public class AsteroidDivisionPauline : EnemyBaseClass
     AsteroidsSpawnerPauline m_spawner;
     [SerializeField] private int m_damages;
 
+
     internal override void TakeDamage(int m_damagePoints)
     {
         base.TakeDamage(m_damagePoints);
         if (m_lives <= 0)
         {
             m_spawner.UpdateAsteroidCount(-1);
-                Destroy(gameObject);
+            Destroy(gameObject);
             //Particles
             if (m_subAsteroids != null)
             {

@@ -25,17 +25,16 @@ namespace Mika
 
         public int Score { get; private set; } = 0;
         public event Action<int> OnScoreUpdateEvent;
-
-
+        [SerializeField] protected GameObject explosionParticlePrefab;
 
         private void OnEnable()
         {
-            EventManager.EnemyDeathEvent += IncreaseScore;
+            EventManager.EnemyDeathEvent += OnEnemyDeath;
         }
 
         private void OnDisable()
         {
-            EventManager.EnemyDeathEvent -= IncreaseScore;
+            EventManager.EnemyDeathEvent -= OnEnemyDeath;
         }
   
         private void Start()
@@ -44,8 +43,13 @@ namespace Mika
             ResetScore();
         }
 
-        public void IncreaseScore(Enemy enemy)
+        public void OnEnemyDeath(Enemy enemy)
         {
+            // affiche une explosion
+            GameObject o = Instantiate(this.explosionParticlePrefab, enemy.transform.position, Quaternion.identity);
+            o.transform.SetParent(this.transform);
+            Destroy(o, 2f);
+            // augmente le score
             Score += enemy.GetPointValue();
             OnScoreUpdateEvent?.Invoke(Score);
         }

@@ -36,7 +36,8 @@ public class PlayerShipPauline : InputListenerBase
     private void HandleShooting()
     {
 
-        Rigidbody2D bullet = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity);
+        Rigidbody2D bullet = Instantiate(bulletPrefab, bulletSpawn.position, transform.rotation);
+
         Vector2 shipVelocity = shipRigidbody.velocity;
         Vector2 shipDirection = transform.up;
         float shipForwardSpeed = Vector2.Dot(shipVelocity, shipDirection);

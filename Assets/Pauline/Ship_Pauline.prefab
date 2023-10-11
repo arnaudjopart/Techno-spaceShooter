@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2093441031672537063}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BulletShooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 875514568193337900}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.21, z: 0}
+  m_LocalPosition: {x: 0, y: 0.476, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 7949620909908671760}
   - component: {fileID: 4345944478866349409}
   - component: {fileID: 5838782803562539891}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ship_Pauline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   bulletSpeed: 8
-  bulletSpawn: {fileID: 0}
+  bulletSpawn: {fileID: 2093441031672537063}
   bulletPrefab: {fileID: 7645423799303703775, guid: d6d93d189d915a642a6f2573538e7e67, type: 3}
 --- !u!61 &7949620909908671760
 BoxCollider2D:

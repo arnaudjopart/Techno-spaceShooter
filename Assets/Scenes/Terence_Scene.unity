@@ -844,6 +844,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2763484581132258278, guid: abbeb9fc71967fa4c9b48dc8c1b380af, type: 3}
     - target: {fileID: 1523932023149196862, guid: e55a9a72508b8474286bbee21979a750, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 7674974023491008464, guid: 0d76a57da1a16f44180372893868b036, type: 3}
+    - target: {fileID: 1523932023149196862, guid: e55a9a72508b8474286bbee21979a750, type: 3}
       propertyPath: shootSound
       value: 
       objectReference: {fileID: 8300000, guid: 80f76dad5c303244880e5ac0b269ff20, type: 3}

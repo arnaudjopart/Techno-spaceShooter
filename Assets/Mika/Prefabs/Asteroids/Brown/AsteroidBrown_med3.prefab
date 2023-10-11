@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6261670405804996333}
   - component: {fileID: -4827739691947360378}
   - component: {fileID: 5828955923114789897}
+  - component: {fileID: -8930792908337753625}
   m_Layer: 0
   m_Name: AsteroidBrown_med3
   m_TagString: Untagged
@@ -178,6 +179,7 @@ MonoBehaviour:
   m_lives: 2
   m_speed: 1
   maxLifeTime: 20
+  maxLife: 2
   points: 2
   chocClip: {fileID: 8300000, guid: f087ba2c78321a44f95b7684b0315490, type: 3}
 --- !u!82 &5828955923114789897
@@ -276,3 +278,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-8930792908337753625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3595784774253865038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6fa06b683bbbd941b303b1e9671c4ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

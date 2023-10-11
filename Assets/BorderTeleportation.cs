@@ -3,6 +3,7 @@ using UnityEngine;
 public class BorderTeleportation : MonoBehaviour
 {
     protected Vector2 m_bounds;
+    protected bool wasInsideBounds = false;
 
     protected virtual void Awake()
     {
@@ -11,6 +12,10 @@ public class BorderTeleportation : MonoBehaviour
 
     protected virtual void LateUpdate()
     {
+        if (!this.wasInsideBounds && !(this.wasInsideBounds = !IsOutsideXBounds() && !IsOutsideYBounds()))
+        {
+            return;
+        }
         // téléporte le joueur s'il est hors des limites ou non
         this.transform.position = new Vector3((IsOutsideXBounds() ? -1 : 1) * this.transform.position.x, (IsOutsideYBounds() ? -1 : 1) * this.transform.position.y, this.transform.position.z);
     }

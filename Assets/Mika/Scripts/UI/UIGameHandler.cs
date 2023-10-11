@@ -15,7 +15,7 @@ namespace Mika
         [Header("Game Over Settings")]
         [SerializeField] private GameObject gameOverPanel;
         [Header("Lives Settings")]
-        [SerializeField] private TMP_Text livesTxt;
+        [SerializeField] private GameObject lostLives, leftLives;
 
         private void OnEnable()
         {
@@ -42,9 +42,16 @@ namespace Mika
             Time.timeScale = 0f;
         }
 
-        private void OnLifeChanged(int oldLife, int newLife)
+        private void OnLifeChanged(int oldLife, int newLife, int maxLife)
         {
-            livesTxt.text = $"{newLife}";
+            RectTransform rect = this.lostLives.GetComponent<RectTransform>();
+            Vector2 sizeDelta = rect.sizeDelta;
+            sizeDelta.x = 112f * (maxLife - newLife);
+            rect.sizeDelta = sizeDelta;
+            rect = this.leftLives.GetComponent<RectTransform>();
+            sizeDelta = rect.sizeDelta;
+            sizeDelta.x = 112f * newLife;
+            rect.sizeDelta = sizeDelta;
         }
 
         private void Update()

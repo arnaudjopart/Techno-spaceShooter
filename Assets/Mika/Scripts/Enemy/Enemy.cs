@@ -6,13 +6,13 @@ namespace Mika
     [RequireComponent(typeof(AudioSource))]
     public class Enemy : EnemyBaseClass
     {
-        [SerializeField] private float maxLifeTime = 20f;
+        [SerializeField] protected float maxLifeTime = 20f;
         protected float lifeTime = 0f;
         [Range(1, 100)]
-        [SerializeField] private int points = 1;
+        [SerializeField] protected int maxLife = 1;
         [Range(1, 100)]
-        [SerializeField] private int maxLife = 1;
-        public bool IsAlive { get => m_lives > 0 && this.lifeTime < this.maxLifeTime; }
+        [SerializeField] protected int points = 1;
+        public bool IsAlive { get => this.gameObject.activeInHierarchy && m_lives > 0 && this.lifeTime < this.maxLifeTime; }
         protected AudioSource audioSource;
 
         protected virtual void Awake()
@@ -32,7 +32,7 @@ namespace Mika
             }
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             if (m_lives <= 0)
             {

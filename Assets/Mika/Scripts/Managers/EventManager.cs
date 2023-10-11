@@ -6,7 +6,7 @@ namespace Mika
     {
         public static event Action<Enemy> EnemyDeathEvent;
         public static event Action GameOverEvent;
-        public static event Action<int, int> PlayerLostLifeEvent;
+        public static event Action<int, int, int> PlayerLostLifeEvent;
 
         public static void InvokeEnemyDeathEvent(Enemy enemy)
         {
@@ -18,9 +18,9 @@ namespace Mika
             GameOverEvent?.Invoke();
         }
 
-        public static void InvokePlayerLifeChangedEvent(int oldLife, int newLife)
+        public static void InvokePlayerLifeChangedEvent(int oldLife, int newLife, int maxLife)
         {
-            PlayerLostLifeEvent?.Invoke(oldLife, newLife);
+            PlayerLostLifeEvent?.Invoke(oldLife, newLife, maxLife);
         }
     }
 }

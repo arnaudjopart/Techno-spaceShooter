@@ -14,12 +14,20 @@ namespace Mika
         [Header("Sound Settings")]
         [SerializeField] private AudioClip playerAttackClip;
         private AudioSource audioSource;
-        public int Lives { get; private set; } = 3;
+
+        [Header("Life Settings")]
+        [SerializeField] private int maxLives = 3;
+        public int Lives { get; private set; }
 
         private void Awake()
         {
-            Time.timeScale = 1f;
             this.audioSource = GetComponent<AudioSource>();
+        }
+
+        private void Start()
+        {
+            Time.timeScale = 1f;
+            ResetLife();
         }
 
         public override void ProcessInputAxes(Vector2 input)
@@ -31,7 +39,10 @@ namespace Mika
         {
             if (_keyCode == KeyCode.Space)
             {
-                this.audioSource.PlayOneShot(this.playerAttackClip);
+                if (!this.audioSource.isPlaying)
+                {
+                    this.audioSource.PlayOneShot(this.playerAttackClip);
+                }
                 Vector3 offset = transform.up;
                 offset *= 0.5f;
                 Vector3 spawnPos = transform.position + offset;
@@ -60,7 +71,17 @@ namespace Mika
 
         private void LoseLife(int lostLives)
         {
-            EventManager.InvokePlayerLifeChangedEvent(Lives, Lives -= lostLives);
+            SetLife(Lives - lostLives);
+        }
+
+        private void SetLife(int newLife)
+        {
+            EventManager.InvokePlayerLifeChangedEvent(Lives, Lives = newLife, this.maxLives);
+        }
+
+        private void ResetLife()
+        {
+            SetLife(this.maxLives);
         }
     }
 }

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -799725251573689860}
   - component: {fileID: -7441293577671702138}
   - component: {fileID: 7415870170228270450}
+  - component: {fileID: -6959597566109094183}
   m_Layer: 0
   m_Name: AsteroidGray_big2
   m_TagString: Untagged
@@ -178,6 +179,7 @@ MonoBehaviour:
   m_lives: 3
   m_speed: 0.5
   maxLifeTime: 20
+  maxLife: 3
   points: 3
   chocClip: {fileID: 8300000, guid: f087ba2c78321a44f95b7684b0315490, type: 3}
 --- !u!82 &7415870170228270450
@@ -276,3 +278,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-6959597566109094183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7455513564810380590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6fa06b683bbbd941b303b1e9671c4ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

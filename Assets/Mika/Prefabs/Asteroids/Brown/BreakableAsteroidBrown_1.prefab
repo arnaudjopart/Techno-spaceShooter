@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -5968271165429275820}
   - component: {fileID: -9062237917773800952}
   - component: {fileID: 4999173577670095982}
+  - component: {fileID: -8879263304600948997}
   m_Layer: 0
   m_Name: BreakableAsteroidBrown_1
   m_TagString: Untagged
@@ -178,6 +179,7 @@ MonoBehaviour:
   m_lives: 4
   m_speed: 0.4
   maxLifeTime: 20
+  maxLife: 5
   points: 5
   chocClip: {fileID: 8300000, guid: f087ba2c78321a44f95b7684b0315490, type: 3}
   smallAsteroidPrefab: {fileID: 1458167018991908628, guid: 373ec56cbf950b449a311675ca8a2532, type: 3}
@@ -277,3 +279,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-8879263304600948997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8619275650118808469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6fa06b683bbbd941b303b1e9671c4ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

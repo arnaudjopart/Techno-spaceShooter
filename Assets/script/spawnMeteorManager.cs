@@ -11,6 +11,7 @@ public class spawnMeteorManager : MonoBehaviour
     [SerializeField] GameObject[] meteors;
     private bool peutspawn;
     int nbmeteor;
+    int waves;
 
     private void Awake()
     {
@@ -28,12 +29,13 @@ public class spawnMeteorManager : MonoBehaviour
 
         if (peutspawn)
         {
-
+            Debug.Log("waves: " + waves);
             SpawnMeteor();
         }
     }
     public void SpawnMeteor()
     {
+        waves++;
         int meteor = Random.Range(0, meteors.Length-1);
         spawnpos = Random.insideUnitCircle.normalized * 12;
         if (peutspawn && nbmeteor <= 50) 

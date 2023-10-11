@@ -13,9 +13,9 @@ namespace Mika
 
         private void OnParticleCollision(GameObject collision)
         {
-            if (collision.GetComponent<Enemy>() != null)
+            if (collision.GetComponent<EnemyBaseClass>() != null)
             {
-                m_projectileLogic.ApplyEffect(collision.GetComponent<Enemy>());
+                m_projectileLogic.ApplyEffect(collision.GetComponent<EnemyBaseClass>());
             }
         }
     }

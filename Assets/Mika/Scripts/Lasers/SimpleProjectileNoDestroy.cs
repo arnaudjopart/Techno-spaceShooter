@@ -6,9 +6,9 @@ namespace Mika
     {
         [SerializeField] protected int m_damagePoints;
 
-        public override void ApplyEffect(Enemy _target)
+        public override void ApplyEffect(EnemyBaseClass _target)
         {
-            _target.GetComponent<Enemy>().TakeDamage(m_damagePoints);
+            _target.GetComponent<EnemyBaseClass>().TakeDamage(m_damagePoints);
         }
     }
 }

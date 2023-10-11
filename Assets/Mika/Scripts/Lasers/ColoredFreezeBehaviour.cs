@@ -14,12 +14,12 @@ namespace Mika
             waitFrozen = new WaitForSeconds(freezeTime);
         }
 
-        public override void ApplyEffect(Enemy _target)
+        public override void ApplyEffect(EnemyBaseClass _target)
         {
             StartCoroutine(ColoredFreeze(_target));
         }
 
-        private IEnumerator ColoredFreeze(Enemy _target)
+        private IEnumerator ColoredFreeze(EnemyBaseClass _target)
         {
             GetComponent<Renderer>().enabled = false;
             GetComponent<Collider2D>().enabled = false;

@@ -66,7 +66,7 @@ namespace Mika
 
         public void RestartGame()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene("MikaInput_Scene");
         }
 
         public void BackToMainMenu()

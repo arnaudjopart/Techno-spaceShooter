@@ -11,13 +11,19 @@ public class SpawnUFO : MonoBehaviour
     [SerializeField] GameObject back;
     [SerializeField] GameObject left;
     [SerializeField] GameObject right;
+    [SerializeField] int timer = 4;
+    vieUFO myvie;
     
     bool m_canShoot;
     private void Awake()
     {
         m_canShoot = false;
         StartCoroutine(attenteShootUfo());
+        myvie = GetComponent<vieUFO>();
+        
     }
+
+    
 
     
 
@@ -41,8 +47,8 @@ public class SpawnUFO : MonoBehaviour
     IEnumerator attenteShootUfo()
     {
         m_canShoot = false;
-        
-        yield return new WaitForSeconds(2);
+       
+        yield return new WaitForSeconds(timer);
         m_canShoot = true;
     }
     private void Update()
@@ -52,5 +58,11 @@ public class SpawnUFO : MonoBehaviour
 
         shootUfo();
         }
+
+        if (myvie.vie == 3) timer = 4;
+
+        if (myvie.vie == 2) timer = 2;
+
+        if (myvie.vie == 1) timer = 1;
     }
 }

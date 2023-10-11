@@ -8,11 +8,14 @@ public class LaserDamage : MonoBehaviour
     [SerializeField] AudioClip boomSound;
     AudioSource audioBoom;
     SpriteRenderer spriteRenderer;
+    deplacement roquette;
 
     private void Awake()
     {
         audioBoom = GetComponent<AudioSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        roquette = GetComponent<deplacement>();
+
     }
 
     // Start is called before the first frame update
@@ -22,7 +25,6 @@ public class LaserDamage : MonoBehaviour
         {
             audioBoom.PlayOneShot(boomSound);
             Destroy(collision.gameObject);
-            
             GetComponent<CircleCollider2D>().enabled = false;
                 if (liste.Length > 0 )
             {
@@ -36,26 +38,5 @@ public class LaserDamage : MonoBehaviour
             Destroy(this.gameObject,0.5f);
         }
     }
-   /* private void OnTriggerEnter2D(Collider2D collision)
-    {
-        
-        if (collision.gameObject.CompareTag("Laser"))
-        {
-            Destroy(collision.gameObject);
-            int asteroide = Random.Range(0, liste.Length - 1);
-            
-            Destroy(gameObject);
-            for (int i = 0; i < 2; i++)
-            {
-                Instantiate(liste[asteroide], transform.position, Quaternion.identity);
-            }
-        }
-    
-    }*/
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+  
 }

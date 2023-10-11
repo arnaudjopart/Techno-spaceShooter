@@ -47,6 +47,7 @@ public class ColliderDamage : MonoBehaviour
             vie--;
             invincible = true;
             StartCoroutine(invincibilite());
+            
         }
 
         if (vie == 0)

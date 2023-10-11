@@ -22,14 +22,16 @@ public class spawnMeteorManager : MonoBehaviour
     }
     private void Start()
     {
-        peutSpawnUfo = true;
+        peutSpawnUfo = false;
         peutspawn = true;
         SpawnMeteor();
+        StartCoroutine(timerUfo());
     }
 
     public void Update()
     {
         nbmeteor = GameObject.FindObjectsOfType<spawnMeteorManager>().Length;
+        nbUfo = GameObject.FindGameObjectsWithTag("UFO").Length;
         if (peutSpawnUfo)
         {
             SpawnUfo();
@@ -69,7 +71,7 @@ public class spawnMeteorManager : MonoBehaviour
     IEnumerator timeraléatoire()
     {
         peutspawn = false;
-        timer = Random.Range(0.5f, 2f);
+        timer = Random.Range(0.2f, 0.6f);
         yield return new WaitForSeconds(timer);
         peutspawn = true;
     }

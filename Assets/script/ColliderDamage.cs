@@ -42,6 +42,13 @@ public class ColliderDamage : MonoBehaviour
             StartCoroutine(invincibilite());
         }
 
+        else if (collision.gameObject.CompareTag("laserUFO"))
+        {
+            vie--;
+            invincible = true;
+            StartCoroutine(invincibilite());
+        }
+
         if (vie == 0)
         {
             SceneManager.LoadScene("Terence_Scene");

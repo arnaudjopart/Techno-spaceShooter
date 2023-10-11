@@ -44,7 +44,7 @@ public class spawnMeteorManager : MonoBehaviour
     {
         int meteor = Random.Range(0, meteors.Length - 1);
         spawnpos = Random.insideUnitCircle.normalized * 12;
-        if (peutspawn && nbmeteor <= 50)
+        if (peutspawn && nbmeteor <= 10)
         {
             var instance = Instantiate(meteors[meteor], spawnpos, transform.rotation);
             instance.GetComponent<meteordirection>().SetRandomDirection();

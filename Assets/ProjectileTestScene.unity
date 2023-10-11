@@ -518,7 +518,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_lives: 0
   m_speed: 1
-  m_subAsteroids: []
 --- !u!1 &1250351413
 GameObject:
   m_ObjectHideFlags: 0
@@ -676,7 +675,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd0b8483c780cdc45a1e994aeef218f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_projectileLogic: {fileID: 0}
 --- !u!114 &1250351422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -691,7 +689,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_speed: 1
   m_damagePoints: 5
-  movement: {fileID: 0}
 --- !u!1 &1359836838
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,7 +854,6 @@ GameObject:
   - component: {fileID: 1689369876}
   - component: {fileID: 1689369875}
   - component: {fileID: 1689369874}
-  - component: {fileID: 1689369880}
   m_Layer: 0
   m_Name: Asteroid (1)
   m_TagString: Untagged
@@ -891,7 +887,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_lives: 0
   m_speed: 1
-  m_subAsteroids: []
 --- !u!50 &1689369876
 Rigidbody2D:
   serializedVersion: 4
@@ -1021,20 +1016,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
---- !u!114 &1689369880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1689369873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5155778aa14938c49b99e5462de8b959, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_lives: 2
-  m_speed: 2
 --- !u!114 &1926942826 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6359621890346096091, guid: 40f2981746ca2504d972d80677023f7d, type: 3}
@@ -1203,7 +1184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd0b8483c780cdc45a1e994aeef218f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_projectileLogic: {fileID: 0}
 --- !u!114 &1964944244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1217,8 +1197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_speed: 2
-  m_freezeTime: 2
-  m_speed: 2
+  m_freezeTime: 10
 --- !u!1001 &4559910289716843786
 PrefabInstance:
   m_ObjectHideFlags: 0

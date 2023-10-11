@@ -1,10 +1,17 @@
 
+using System;
 using UnityEngine;
 
 public class PlayerShipPauline : InputListenerBase
 {
     [SerializeField] int speed;
     private int rotation_Z;
+    private WeaponSystemBase m_weaponSystem;
+
+    private void Awake()
+    {
+        m_weaponSystem = GetComponent<WeaponSystemBase>();
+    }
 
     public override void ProcessInputAxesRaw(Vector2 _inputAxes)
     {
@@ -21,8 +28,19 @@ public class PlayerShipPauline : InputListenerBase
         if (_inputAxes.x < 0 && _inputAxes.y < 0) rotation_Z = 135;
         if (_inputAxes.x > 0 && _inputAxes.y < 0) rotation_Z = 225;
         if (_inputAxes.x > 0 && _inputAxes.y > 0) rotation_Z = 315;*/
+    }
 
-
+    public override void ProcessMouseButtonDown(int _button)
+    {
+        base.ProcessMouseButtonDown(_button);
+        if (_button == 0) { 
+            m_weaponSystem.ProcessShootPrimaryWeapon();
+            
+        }
+        if (_button == 1) 
+        {
+            m_weaponSystem.ProcessShootSecondaryWeapon();
+        }
     }
 }
 

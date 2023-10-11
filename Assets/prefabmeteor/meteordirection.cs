@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
 
-public class meteordirection : MonoBehaviour
+public class meteordirection : EnemyBaseClass
 {
     [SerializeField] float speed;
     [SerializeField] float rotation=45f;
     Vector3 direction;
     Vector3 random;
+    [SerializeField] private GameObject[] m_liste;
+
     public void Awake()
     {
         SetRandomDirection();
@@ -16,7 +18,7 @@ public class meteordirection : MonoBehaviour
     }
     private void Update()
     {
-        transform.position+= direction.normalized * Time.deltaTime * speed;
+        transform.position+= direction.normalized * (Time.deltaTime * speed);
         transform.Rotate(0,0, rotation *Time.deltaTime);
     }
 
@@ -43,5 +45,18 @@ public class meteordirection : MonoBehaviour
         
     }
 
-
+    internal override void TakeDamage(int m_damagePoints)
+    {
+        base.TakeDamage(m_damagePoints);
+        GetComponent<CircleCollider2D>().enabled = false;
+        if (m_liste.Length > 0 )
+        {
+            int asteroide = Random.Range(0,m_liste.Length-1);
+            for (int i = 0; i < 2; i++) 
+            {
+                Instantiate(m_liste[asteroide], transform.position + new Vector3(Random.Range (0,0.5f),Random.Range(0,0.5f),0), Quaternion.identity);
+            }
+        }
+        Destroy(gameObject);
+    }
 }

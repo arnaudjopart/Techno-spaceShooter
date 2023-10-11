@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 222099132084206744}
   - component: {fileID: 7226218490304489683}
   - component: {fileID: -6392495291242894851}
-  - component: {fileID: 47481084234592585}
+  - component: {fileID: -2084706123984409433}
   m_Layer: 0
   m_Name: laserUFO
   m_TagString: laserUFO
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07b9131e0ed5ca944b14b60b7f0686e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &47481084234592585
+--- !u!114 &-2084706123984409433
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3710222555624985099}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddce5719ce316904abf6a8a5e8ae290a, type: 3}
+  m_Script: {fileID: 11500000, guid: 861d9efcd4cacb64795f63ef443eb0a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 1

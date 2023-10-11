@@ -5,15 +5,17 @@ using UnityEngine;
 public class AsteroidsSpawnerPauline : MonoBehaviour
 {
     [SerializeField] GameObject[] meteors;
+    private GameObject[] myInstantiatedGameObjects;
     private float spawnRate;
     Vector3 spawnDirection;
     bool canSpawn;
-    [SerializeField] int meteorsCount;
+    [SerializeField] int m_meteorsCount;
+    [SerializeField] int maxMeteorsSpawn = 50;
 
 
     private void Awake()
     {
-        meteorsCount = 0;
+        m_meteorsCount = 0;
     }
     // Start is called before the first frame update
     void Start()
@@ -26,23 +28,25 @@ public class AsteroidsSpawnerPauline : MonoBehaviour
     {
 
       
-        if (meteorsCount <= 50)
+        if (m_meteorsCount <= maxMeteorsSpawn)
         {
             canSpawn = true;
             int meteorsSpawned = Random.Range(0, meteors.Length);
             spawnDirection = Random.insideUnitCircle.normalized * 12f;
 
-            meteorsCount++;
-            Instantiate(meteors[meteorsSpawned], spawnDirection, Quaternion.identity);
+            m_meteorsCount++;
+            var item = Instantiate(meteors[meteorsSpawned], spawnDirection, Quaternion.identity);
+            item.GetComponent<AsteroidDivisionPauline>().SetSpawner(this);
+
             StartCoroutine(WaitMeteors());
         }
-        if(meteorsCount >= 50)
+        if(m_meteorsCount >= maxMeteorsSpawn)
         {
             canSpawn = false;
         }
-        
-      
     }
+
+
     IEnumerator WaitMeteors()
     {
         canSpawn = false;
@@ -58,5 +62,10 @@ public class AsteroidsSpawnerPauline : MonoBehaviour
         {
             SpawnMeteors();
         }
+    }
+
+    internal void UpdateAsteroidCount(int v)
+    {
+        m_meteorsCount += v;
     }
 }

@@ -193,4 +193,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_lives: 1
   m_speed: 1
-  m_subAsteroids: []
+  m_subAsteroids: {fileID: 7402460052027420659, guid: a5fe5797d4af36b47a596708b2fb89e1, type: 3}
+  m_damages: 1

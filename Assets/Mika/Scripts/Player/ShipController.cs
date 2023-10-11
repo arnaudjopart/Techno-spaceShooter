@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Mika
@@ -9,7 +10,8 @@ namespace Mika
         [SerializeField] private float rotationSpeed;
 
         [Header("Projectile Settings")]
-        [SerializeField] private GameObject projectilePrefab;
+        [SerializeField] private GameObject[] availableProjectilePrefab;
+        private WeaponType currentWeapon;
 
         [Header("Sound Settings")]
         [SerializeField] private AudioClip playerAttackClip;
@@ -28,6 +30,7 @@ namespace Mika
         {
             Time.timeScale = 1f;
             ResetLife();
+            ChangeWeapon(0);
         }
 
         public override void ProcessInputAxes(Vector2 input)
@@ -39,18 +42,40 @@ namespace Mika
         {
             if (_keyCode == KeyCode.Space)
             {
-                if (!this.audioSource.isPlaying)
-                {
-                    this.audioSource.PlayOneShot(this.playerAttackClip);
-                }
-                Vector3 offset = transform.up;
-                offset *= 0.5f;
-                Vector3 spawnPos = transform.position + offset;
-                Quaternion wantedRotation = transform.rotation;
-                GameObject o = Instantiate(projectilePrefab, spawnPos, wantedRotation);
-                o.transform.SetParent(transform);
-                Destroy(o, 2f);
+                FireSelectedWeapon();
             }
+            else if (_keyCode == KeyCode.LeftAlt)
+            {
+                ChangeWeapon();
+            }
+        }
+
+        public override void ProcessMouseButtonDown(int _button)
+        {
+            if (_button == 0)
+            {
+                FireSelectedWeapon();
+            }
+            else if (_button == 1)
+            {
+                ChangeWeapon();
+            }
+        }
+
+        private void FireSelectedWeapon()
+        {
+            // utilise l'arme sélectionnée
+            if (!this.audioSource.isPlaying)
+            {
+                this.audioSource.PlayOneShot(this.playerAttackClip);
+            }
+            Vector3 offset = transform.up;
+            offset *= 0.5f;
+            Vector3 spawnPos = transform.position + offset;
+            Quaternion wantedRotation = transform.rotation;
+            GameObject o = Instantiate(this.availableProjectilePrefab[(int)this.currentWeapon], spawnPos, wantedRotation);
+            o.transform.SetParent(transform);
+            Destroy(o, 2f);
         }
 
         private void Update()
@@ -82,6 +107,18 @@ namespace Mika
         private void ResetLife()
         {
             SetLife(this.maxLives);
+        }
+
+        private void ChangeWeapon(WeaponType weaponType)
+        {
+            // change d'arme
+            this.currentWeapon = weaponType;
+            EventManager.InvokePlayerChangeWeaponEvent(this.currentWeapon);
+        }
+
+        private void ChangeWeapon()
+        {
+            ChangeWeapon((WeaponType)(((int)this.currentWeapon + 1) % Enum.GetNames(typeof(WeaponType)).Length));
         }
     }
 }

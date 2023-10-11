@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7733680581550781980}
   - component: {fileID: 6359621890346096091}
   - component: {fileID: 1892482605479964970}
+  - component: {fileID: 3684699838208422426}
   m_Layer: 6
   m_Name: PlayerShip
   m_TagString: Player
@@ -146,17 +147,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 1
   rotationSpeed: 100
-  projectilePrefab: {fileID: 5519766045237600737, guid: 0eb4b70a69b6d5043b440eaafe1758d6, type: 3}
-  ghostShips:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  shipParent: {fileID: 0}
+  availableProjectilePrefab:
+  - {fileID: 5519766045237600737, guid: 47f7710277ebeec48ae3b271e517130e, type: 3}
+  - {fileID: 9046656235397877558, guid: 54fb2162cb7b08140868ce3837cf7aff, type: 3}
+  playerAttackClip: {fileID: 8300000, guid: e7a2e26cb1ca0af44bc16946b38b9a70, type: 3}
+  maxLives: 3
 --- !u!1001 &3479717373189027354
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -248,6 +243,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2254865499615878981, guid: 40f2981746ca2504d972d80677023f7d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1892482605479964970}
+    - targetCorrespondingSourceObject: {fileID: 2254865499615878981, guid: 40f2981746ca2504d972d80677023f7d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3684699838208422426}
   m_SourcePrefab: {fileID: 100100000, guid: 40f2981746ca2504d972d80677023f7d, type: 3}
 --- !u!82 &1892482605479964970
 AudioSource:
@@ -258,9 +256,9 @@ AudioSource:
   m_GameObject: {fileID: 2254865499615878981}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7317145936813336584, guid: 014c337e9baea7d4d8601467f28d8ee8, type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -345,3 +343,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3684699838208422426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2254865499615878981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c4e88f86ad11e408dcc05f1467e534, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

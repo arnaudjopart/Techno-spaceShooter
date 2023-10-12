@@ -39,7 +39,6 @@ namespace Mika
   
         private void Start()
         {
-            
             ResetScore();
         }
 

@@ -3,19 +3,16 @@ using UnityEngine;
 
 namespace Mika
 {
-    [RequireComponent(typeof(AudioSource))]
     public class Enemy : EnemyBaseClass
     {
         [SerializeField] private EnemyData enemyData;
         protected float lifeTime = 0f;
         public bool IsAlive { get => m_lives > 0 && this.lifeTime < this.enemyData.maxLifetime && this.gameObject.activeInHierarchy; }
-        protected AudioSource audioSource;
+        public event Action<int, int, int> EnemyLifeChangedEvent;
 
-        protected virtual void Awake()
+        private void Start()
         {
-            this.audioSource = GetComponent<AudioSource>();
-            ResetLife();
-            ResetLifetime();
+            ResetStates();
         }
 
         public string GetEnemyName()
@@ -25,21 +22,28 @@ namespace Mika
 
         internal override void TakeDamage(int m_damagePoints)
         {
+            SoundManager.Instance.PlayChocClipAt(this.transform.position);
+
+            int beforeHitLife = GetLives();
             base.TakeDamage(m_damagePoints);
-            if (m_lives <= 0)
+            int lostLives = beforeHitLife - GetLives();
+            if (lostLives > 0)
             {
-                EventManager.InvokeEnemyDeathEvent(this);
-                gameObject.SetActive(false);
+                EnemyLifeChangedEvent?.Invoke(beforeHitLife, GetLives(), GetMaxLives());
+                if (GetLives() <= 0)
+                {
+                    EventManager.InvokeEnemyDeathEvent(this);
+                    gameObject.SetActive(false);
+                }
             }
         }
 
         protected virtual void Update()
         {
-            if (m_lives <= 0)
+            if (GetLives() <= 0)
             {
                 return;
             }
-            // désactivé après 5s
             lifeTime += Time.deltaTime;
             if (lifeTime > this.enemyData.maxLifetime)
             {
@@ -47,19 +51,25 @@ namespace Mika
             }
         }
 
-        public void ResetLifetime()
+        public void ResetStates()
         {
-            lifeTime = 0f;
-        }
-
-        public void ResetLife()
-        {
-            m_lives = Math.Max(1, this.enemyData.maxLives);
+            this.lifeTime = 0f;
+            EnemyLifeChangedEvent?.Invoke(GetLives(), (this.m_lives = Math.Max(1, GetMaxLives())), GetMaxLives());
         }
 
         public virtual int GetPointValue()
         {
             return this.enemyData.points;
+        }
+
+        public int GetMaxLives()
+        {
+            return this.enemyData.maxLives;
+        }
+
+        public int GetLives()
+        {
+            return this.m_lives;
         }
     }
 }

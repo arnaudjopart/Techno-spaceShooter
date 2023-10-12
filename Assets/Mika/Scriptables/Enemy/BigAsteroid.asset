@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Big Asteroid
   maxLives: 3
-  maxLifetime: 20
+  maxLifetime: 30
   baseSpeed: 0.5
   points: 3

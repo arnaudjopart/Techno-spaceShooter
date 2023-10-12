@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7973108897030963214}
   - component: {fileID: -6164670779606190612}
   - component: {fileID: -5968271165429275820}
-  - component: {fileID: -998876351007506403}
+  - component: {fileID: 3693812873495107182}
   m_Layer: 0
   m_Name: BreakableAsteroidGray_1
   m_TagString: Untagged
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82c90de875616354f978095469a7bc4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-998876351007506403
+--- !u!114 &3693812873495107182
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,13 +172,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 8619275650118808469}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06d66fc990780f340a9e72c56bebda1e, type: 3}
+  m_Script: {fileID: 11500000, guid: cc857adb05e1d9f4b80d59de01a29605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_lives: 4
   m_speed: 0.4
   enemyData: {fileID: 11400000, guid: 18822097bec314245b53216cee6e6a74, type: 2}
-  smallAsteroidPrefab: {fileID: 6275952170836928255, guid: b83ea901fdd3bed4aa79890c0e640c43, type: 3}
+  smallAsteroidPrefabs:
+  - {fileID: 6500342517958007045, guid: a557844ba8e53974c9548cc3159eb70d, type: 3}
+  - {fileID: 6275952170836928255, guid: b83ea901fdd3bed4aa79890c0e640c43, type: 3}
+  breakingParts: 3
+  breakingChance: 100
 --- !u!1001 &260035254982693638
 PrefabInstance:
   m_ObjectHideFlags: 0

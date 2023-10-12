@@ -178,6 +178,9 @@ MonoBehaviour:
   m_lives: 3
   m_speed: 0.5
   enemyData: {fileID: 11400000, guid: e1844dfb8555d8d4b999c06659842624, type: 2}
+  smallAsteroidPrefabs: []
+  breakingParts: 2
+  breakingChance: 66
 --- !u!1001 &4388056021715736539
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -6,8 +6,7 @@ public class SimpleProjectileLogic : ProjectileLogicBaseClass
 
     public override void ApplyEffect(EnemyBaseClass _target)
     {
-        _target.TakeDamage(m_damagePoints);
-        Destroy(gameObject);
+
     }
 }
 

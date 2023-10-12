@@ -54,6 +54,11 @@ public class EnemyBaseClass : MonoBehaviour, IMovable
         m_speed = -m_speed;
     }
 
+    internal virtual int GetCollisionDamage()
+    {
+        return 0;
+    }
+
 
 
 }

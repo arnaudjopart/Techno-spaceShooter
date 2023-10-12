@@ -109,6 +109,7 @@ MonoBehaviour:
   back: {fileID: 0}
   left: {fileID: 0}
   right: {fileID: 0}
+  timer: 4
 --- !u!114 &5603384925293868277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,7 +136,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 500
+  m_Mass: 501
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -209,3 +210,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb9d562903968204b83d928ce666040c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vie: 0

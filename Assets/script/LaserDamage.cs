@@ -9,6 +9,7 @@ public class LaserDamage : MonoBehaviour
     AudioSource audioBoom;
     SpriteRenderer spriteRenderer;
     deplacement roquette;
+    [SerializeField] GameObject particule;
 
     private void Awake()
     {
@@ -24,6 +25,7 @@ public class LaserDamage : MonoBehaviour
         if (collision.gameObject.CompareTag("Laser") || collision.gameObject.CompareTag("laserUFO"))
         {
             audioBoom.PlayOneShot(boomSound);
+            Instantiate(particule,transform.position,Quaternion.identity);
             Destroy(collision.gameObject);
             GetComponent<CircleCollider2D>().enabled = false;
                 if (liste.Length > 0 )

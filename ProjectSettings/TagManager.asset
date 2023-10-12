@@ -11,6 +11,8 @@ TagManager:
   - Roquette
   - UFO
   - laserUFO
+  - Projectile
+  - Vaisseau
   layers:
   - Default
   - TransparentFX

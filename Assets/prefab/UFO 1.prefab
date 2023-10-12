@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 976136274017531450}
   - component: {fileID: 3305683850977128551}
   - component: {fileID: 8039933357631139556}
+  - component: {fileID: -4210893488895204451}
   m_Layer: 10
   m_Name: UFO 1
   m_TagString: UFO
@@ -101,7 +102,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd8998143d4ac8c4e995cbb70c5df477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserUFO: {fileID: 3710222555624985099, guid: 00acab1d49e80564f90140c6e193f967, type: 3}
+  lasersUfo:
+  - {fileID: 3710222555624985099, guid: 00acab1d49e80564f90140c6e193f967, type: 3}
+  - {fileID: 3710222555624985099, guid: c43b0f0687596f945b1808fcc91790c7, type: 3}
+  - {fileID: 3710222555624985099, guid: 7cb4aa96979d36b4f90d1f67b70e4ace, type: 3}
+  back: {fileID: 0}
+  left: {fileID: 0}
+  right: {fileID: 0}
 --- !u!114 &5603384925293868277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,7 +135,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 500
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -188,5 +195,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07b9131e0ed5ca944b14b60b7f0686e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-4210893488895204451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4308556177643817033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb9d562903968204b83d928ce666040c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

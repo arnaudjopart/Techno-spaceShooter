@@ -8,13 +8,14 @@ public class deplacement : InputListenerBase
     [SerializeField] GameObject roquette;
     [SerializeField] Vector3 projectileOffset;
     [SerializeField] int speed;
-    [SerializeField] int nbAsteroidDetruit;
+    public int nbAsteroidDetruit;
     [SerializeField] AudioClip shootSound;
     [SerializeField] AudioSource audioShoot;
 
     private void Awake()
     {
         audioShoot = GetComponent<AudioSource>();
+
     }
     public override void ProcessMousePosition(Vector2 _mousePosition)
     {
@@ -38,5 +39,10 @@ public class deplacement : InputListenerBase
             nbAsteroidDetruit -= 3;
             Instantiate(roquette, transform.position, transform.rotation);
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Gros") || collision.gameObject.CompareTag("Moyen") || collision.gameObject.CompareTag("Petit")) nbAsteroidDetruit++;
     }
 }

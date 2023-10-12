@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03209f917f6807a4ea2627cbba01ff66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 7674974023491008464, guid: 0d76a57da1a16f44180372893868b036, type: 3}
+  projectile: {fileID: 6102164085232293168, guid: 79740ac1f0003654a9fc510bb99ff121, type: 3}
   roquette: {fileID: 2763484581132258278, guid: abbeb9fc71967fa4c9b48dc8c1b380af, type: 3}
   projectileOffset: {x: 0, y: 0.8, z: 0}
   speed: 4

@@ -4,6 +4,6 @@ namespace Mika
 {
     public class Ufo : Enemy
     {
-
+        
     }
 }

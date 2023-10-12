@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8884765263291113105}
   - component: {fileID: 3875161450026506196}
   - component: {fileID: 4573140232510376294}
+  - component: {fileID: 6344106059993760}
   m_Layer: 0
   m_Name: Asteroid_Explosion_White
   m_TagString: Untagged
@@ -4886,3 +4887,16 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &6344106059993760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2106525295560175525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 512e6a367137d4840ba130a1c01e9973, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_timer: 3

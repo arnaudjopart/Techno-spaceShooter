@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Terence_Scene.unity
     guid: 11b684f6abaa8f74e987aaaeef90b0a2
+  - enabled: 1
+    path: Assets/_Project/_Scenes/Gameplay.unity
+    guid: 38b3f8c91554cc54c8444441a7e47545
   m_configObjects: {}

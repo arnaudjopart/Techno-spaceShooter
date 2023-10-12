@@ -52,7 +52,8 @@ public class ColliderDamage : MonoBehaviour
 
         if (vie == 0)
         {
-            SceneManager.LoadScene("Terence_Scene");
+            var currentScene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(currentScene.buildIndex);
         }
 
     }

@@ -274,7 +274,7 @@ GameObject:
   - component: {fileID: 427886405}
   - component: {fileID: 427886408}
   - component: {fileID: 427886409}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: spawnManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,18 +295,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   meteors:
-  - {fileID: 8619275650118808469, guid: 63ff323a22efccb47a72ea7170a07aa5, type: 3}
-  - {fileID: 5693799378637430259, guid: 2b6fb0f80a547744482157a567f16ae3, type: 3}
-  - {fileID: 3474657840782432336, guid: 002d450e753a1754a9bba506097f46ed, type: 3}
-  - {fileID: 3595784774253865038, guid: c00c5f326c33b9e49ab94c097243d2d8, type: 3}
-  - {fileID: 1458167018991908628, guid: 666d3e45cc5617943a2fbc6039756951, type: 3}
-  - {fileID: 4298662464346640786, guid: ad67d3509138c9948905c9ea98f649d4, type: 3}
-  - {fileID: 8582500377534403166, guid: 68d1d1eb9a17c274db05b1843b900f33, type: 3}
-  - {fileID: 7455513564810380590, guid: fbd7737ab215f1b488012d44692224f5, type: 3}
-  - {fileID: 4867974424992624847, guid: e8091698cdf68684e9f975a337d9960b, type: 3}
-  - {fileID: 4263628875862333980, guid: 49db54dbd9c33ef4882f58accea7523e, type: 3}
-  - {fileID: 6275952170836928255, guid: d96c845acdada654d88997497793efdb, type: 3}
-  - {fileID: 6500342517958007045, guid: 8635cd6db16e9c04e8e6cc55af7b8e59, type: 3}
+  - {fileID: 8619275650118808469, guid: 512cd2e05d8084a45a28aa861adaf1d4, type: 3}
+  - {fileID: 5693799378637430259, guid: a39b3d30c94132947adfb844d64653f6, type: 3}
+  - {fileID: 3474657840782432336, guid: 15af6652fdc665a409dc15b44cac339d, type: 3}
+  - {fileID: 3595784774253865038, guid: 28db2ba6434eb5547a989e1a3ff3d029, type: 3}
+  - {fileID: 1458167018991908628, guid: dc3116927345df44cb9add4fa5c8aaf4, type: 3}
+  - {fileID: 4298662464346640786, guid: c8f903e472479f640b04b2110d224094, type: 3}
+  - {fileID: 8582500377534403166, guid: 7fb960c7336321545a5290606c17afba, type: 3}
+  - {fileID: 7455513564810380590, guid: 663c2f6749482374493c3af0ac6bf830, type: 3}
+  - {fileID: 4867974424992624847, guid: c563e5703e302f945ac9048485d8fac4, type: 3}
+  - {fileID: 4263628875862333980, guid: 1773575fb3f34fb4d9d1a2d0f8d5ebce, type: 3}
+  - {fileID: 6275952170836928255, guid: 4a1e51496721ca04ab1c5367422d553c, type: 3}
+  - {fileID: 6500342517958007045, guid: 1e54ba83043a1d94f8782f3fe773c663, type: 3}
+  ufo: {fileID: 0}
 --- !u!4 &427886406
 Transform:
   m_ObjectHideFlags: 0
@@ -942,10 +943,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1158,6 +1159,10 @@ PrefabInstance:
     - target: {fileID: 8863250283300668960, guid: e55a9a72508b8474286bbee21979a750, type: 3}
       propertyPath: m_Name
       value: VaisseauTerence
+      objectReference: {fileID: 0}
+    - target: {fileID: 8863250283300668960, guid: e55a9a72508b8474286bbee21979a750, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8863250283300668960, guid: e55a9a72508b8474286bbee21979a750, type: 3}
       propertyPath: m_IsActive

@@ -112,6 +112,8 @@ MonoBehaviour:
   m_liste:
   - {fileID: 3474657840782432336, guid: 002d450e753a1754a9bba506097f46ed, type: 3}
   - {fileID: 3595784774253865038, guid: c00c5f326c33b9e49ab94c097243d2d8, type: 3}
+  particule: {fileID: 333094314411107498, guid: ef4603013b277624e8b985803daa6e31, type: 3}
+  m_explosionSound: {fileID: 8300000, guid: 47c5f3cc14e4bde42975ffeab6004f2c, type: 3}
 --- !u!50 &-6027172555037874368
 Rigidbody2D:
   serializedVersion: 4

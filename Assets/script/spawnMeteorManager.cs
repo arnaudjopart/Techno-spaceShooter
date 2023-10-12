@@ -46,7 +46,6 @@ public class spawnMeteorManager : MonoBehaviour
     {
 
         int meteor = Random.Range(0, meteors.Length-1);
-        int meteor = Random.Range(0, meteors.Length - 1);
 
         spawnpos = Random.insideUnitCircle.normalized * 12;
         if (peutspawn && nbmeteor <= 10)
@@ -63,9 +62,13 @@ public class spawnMeteorManager : MonoBehaviour
         spawnPosUfo = Random.insideUnitCircle.normalized * 12;
         if (peutSpawnUfo && nbUfo == 0)
         {
-            var instanceUfo = Instantiate(ufo,spawnPosUfo, transform.rotation);
-            instanceUfo.GetComponent<meteordirection>().SetRandomDirection();
-            nbUfo++;
+            if(ufo != null)
+            {
+                var instanceUfo = Instantiate(ufo, spawnPosUfo, transform.rotation);
+                instanceUfo.GetComponent<meteordirection>().SetRandomDirection();
+                nbUfo++;
+            }
+            
             StartCoroutine(timerUfo());
         }
     }

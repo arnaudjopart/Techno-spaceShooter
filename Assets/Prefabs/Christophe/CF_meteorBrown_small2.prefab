@@ -110,6 +110,8 @@ MonoBehaviour:
   speed: 1
   rotation: 45
   m_liste: []
+  particule: {fileID: 333094314411107498, guid: ef4603013b277624e8b985803daa6e31, type: 3}
+  m_explosionSound: {fileID: 8300000, guid: 47c5f3cc14e4bde42975ffeab6004f2c, type: 3}
 --- !u!50 &8839201311477134439
 Rigidbody2D:
   serializedVersion: 4

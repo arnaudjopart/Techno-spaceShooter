@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -4384125529475230788}
   - component: {fileID: -5534197040946372094}
   - component: {fileID: -5169871787509743783}
-  m_Layer: 11
+  m_Layer: 8
   m_Name: meteorBrown_med1
   m_TagString: Moyen
   m_Icon: {fileID: 0}

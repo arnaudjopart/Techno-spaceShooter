@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5821242606017142157}
   - component: {fileID: 5951123250649219845}
   - component: {fileID: -3507978337723413589}
-  m_Layer: 11
+  m_Layer: 8
   m_Name: meteorGrey_big2
   m_TagString: Gros
   m_Icon: {fileID: 0}
@@ -109,6 +109,8 @@ MonoBehaviour:
   m_liste:
   - {fileID: 4867974424992624847, guid: e8091698cdf68684e9f975a337d9960b, type: 3}
   - {fileID: 4263628875862333980, guid: 49db54dbd9c33ef4882f58accea7523e, type: 3}
+  particule: {fileID: 0}
+  m_explosionSound: {fileID: 0}
 --- !u!50 &-5985139133778065847
 Rigidbody2D:
   serializedVersion: 4

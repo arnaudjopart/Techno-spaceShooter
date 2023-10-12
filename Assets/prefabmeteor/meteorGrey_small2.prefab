@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -2275724168576776498}
   - component: {fileID: 3001637128744388109}
   - component: {fileID: 7893940683779943628}
-  m_Layer: 11
+  m_Layer: 8
   m_Name: meteorGrey_small2
   m_TagString: Petit
   m_Icon: {fileID: 0}
@@ -107,6 +107,8 @@ MonoBehaviour:
   speed: 1
   rotation: 45
   m_liste: []
+  particule: {fileID: 0}
+  m_explosionSound: {fileID: 0}
 --- !u!50 &-2685778290320329402
 Rigidbody2D:
   serializedVersion: 4

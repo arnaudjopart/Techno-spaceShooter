@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -1646564628878104658}
   - component: {fileID: 9028597346116990362}
   - component: {fileID: -277014642535416748}
-  m_Layer: 11
+  m_Layer: 8
   m_Name: meteorBrown_big2
   m_TagString: Gros
   m_Icon: {fileID: 0}

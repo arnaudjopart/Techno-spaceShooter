@@ -8,7 +8,15 @@ public class deplacement : InputListenerBase
     [SerializeField] GameObject roquette;
     [SerializeField] Vector3 projectileOffset;
     [SerializeField] int speed;
-    [SerializeField] int nbAsteroidDetruit;
+    public int nbAsteroidDetruit;
+    [SerializeField] AudioClip shootSound;
+    [SerializeField] AudioSource audioShoot;
+
+    private void Awake()
+    {
+        audioShoot = GetComponent<AudioSource>();
+
+    }
     public override void ProcessMousePosition(Vector2 _mousePosition)
     {
         Vector3 direction = new Vector3(Camera.main.ScreenToWorldPoint(_mousePosition).x,Camera.main.ScreenToWorldPoint(_mousePosition).y, 0)- transform.position;
@@ -23,11 +31,18 @@ public class deplacement : InputListenerBase
     {
         if (_button == 0) { 
         Instantiate(projectile, transform.TransformPoint(projectileOffset) , transform.rotation);
+            audioShoot.PlayOneShot(shootSound);
         }
         if (_button == 1 && nbAsteroidDetruit > 3) 
         {
+            Instantiate(shootSound);
             nbAsteroidDetruit -= 3;
             Instantiate(roquette, transform.position, transform.rotation);
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Gros") || collision.gameObject.CompareTag("Moyen") || collision.gameObject.CompareTag("Petit")) nbAsteroidDetruit++;
     }
 }

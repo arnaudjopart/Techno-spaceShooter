@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 8486076979754386495}
   - component: {fileID: 3866062897224607338}
   - component: {fileID: 1523932023149196862}
+  - component: {fileID: -255233572413780751}
+  - component: {fileID: -1455739431686403263}
   m_Layer: 0
   m_Name: VaisseauTerence
   m_TagString: Untagged
@@ -98,4 +100,58 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 1798353774105227261, guid: 073f839051a3180489bb0a98503db71c, type: 3}
+  roquette: {fileID: 0}
+  projectileOffset: {x: 0, y: 0, z: 0}
   speed: 2
+  nbAsteroidDetruit: 0
+  shootSound: {fileID: 0}
+  audioShoot: {fileID: 0}
+--- !u!58 &-255233572413780751
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8863250283300668960}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.49
+--- !u!114 &-1455739431686403263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8863250283300668960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf950591995d66c4fb6dfff720f05170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vie: 0
+  invincible: 0

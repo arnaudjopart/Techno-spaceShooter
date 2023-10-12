@@ -22,22 +22,39 @@ public class ColliderDamage : MonoBehaviour
             invincible = true;
             StartCoroutine(invincibilite());
         }
-        if (collision.gameObject.CompareTag("Moyen"))
+        else if (collision.gameObject.CompareTag("Moyen"))
         {
             vie--;
             invincible = true;
             StartCoroutine(invincibilite());
         }
-        if (collision.gameObject.CompareTag("Petit"))
+        else if (collision.gameObject.CompareTag("Petit"))
         {
             vie--;
             invincible = true;
             StartCoroutine(invincibilite());
         }
+
+        else if (collision.gameObject.CompareTag("UFO"))
+        {
+            vie--;
+            invincible = true;
+            StartCoroutine(invincibilite());
+        }
+
+        else if (collision.gameObject.CompareTag("laserUFO"))
+        {
+            vie--;
+            invincible = true;
+            StartCoroutine(invincibilite());
+            
+        }
+
         if (vie == 0)
         {
             SceneManager.LoadScene("Terence_Scene");
         }
+
     }
 
     IEnumerator invincibilite()

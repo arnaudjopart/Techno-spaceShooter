@@ -9,6 +9,10 @@ TagManager:
   - Petit
   - Laser
   - Roquette
+  - UFO
+  - laserUFO
+  - Projectile
+  - Vaisseau
   layers:
   - Default
   - TransparentFX
@@ -18,10 +22,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Laser
+  - Vaisseau
+  - UFO
+  - Meteor
   - 
   - 
   - 

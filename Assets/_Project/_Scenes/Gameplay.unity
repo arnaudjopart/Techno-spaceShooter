@@ -361,9 +361,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e11a6eaae1bb549b578d76bbf59a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ufo: {fileID: 0}
-  minSpawnDelay: 0
-  maxSpawnDelay: 0
+  ufo: {fileID: 3551647753168847234, guid: d31f4737c7daff54f9b257fe93c6baa0, type: 3}
+  minSpawnDelay: 8
+  maxSpawnDelay: 20
 --- !u!1 &472142515
 GameObject:
   m_ObjectHideFlags: 0
@@ -1160,6 +1160,10 @@ PrefabInstance:
       value: VaisseauTerence
       objectReference: {fileID: 0}
     - target: {fileID: 8863250283300668960, guid: e55a9a72508b8474286bbee21979a750, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8863250283300668960, guid: e55a9a72508b8474286bbee21979a750, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
@@ -1256,7 +1260,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1643962370}
   - component: {fileID: 1643962369}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerInput
   m_TagString: Untagged
   m_Icon: {fileID: 0}

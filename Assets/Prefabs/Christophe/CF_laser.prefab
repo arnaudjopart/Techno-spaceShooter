@@ -13,6 +13,10 @@ PrefabInstance:
       value: CF_laser
       objectReference: {fileID: 0}
     - target: {fileID: 1659793402658223966, guid: 91613f73a66391740908894951a8cf61, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1659793402658223966, guid: 91613f73a66391740908894951a8cf61, type: 3}
       propertyPath: m_TagString
       value: Laser
       objectReference: {fileID: 0}

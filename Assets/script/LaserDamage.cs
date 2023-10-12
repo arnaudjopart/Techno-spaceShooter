@@ -5,11 +5,11 @@ using UnityEngine;
 public class LaserDamage : MonoBehaviour
 {
     public GameObject[] liste;
-    [SerializeField] AudioClip boomSound;
+    public AudioClip boomSound;
     AudioSource audioBoom;
     SpriteRenderer spriteRenderer;
     deplacement roquette;
-    [SerializeField] GameObject particule;
+    public GameObject particule;
 
     private void Awake()
     {

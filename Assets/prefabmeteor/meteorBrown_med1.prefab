@@ -144,6 +144,8 @@ MonoBehaviour:
   m_liste:
   - {fileID: 1458167018991908628, guid: 666d3e45cc5617943a2fbc6039756951, type: 3}
   - {fileID: 4298662464346640786, guid: ad67d3509138c9948905c9ea98f649d4, type: 3}
+  particule: {fileID: 1031375519078521092, guid: 73323a0c05444c4498d8df6c895e7327, type: 3}
+  m_explosionSound: {fileID: 8300000, guid: cfaebe8ed99745540adeeb8300c7a79c, type: 3}
 --- !u!50 &4853147441926295704
 Rigidbody2D:
   serializedVersion: 4

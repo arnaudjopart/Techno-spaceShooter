@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 public class meteordirection : EnemyBaseClass
 {
@@ -10,11 +11,20 @@ public class meteordirection : EnemyBaseClass
     Vector3 direction;
     Vector3 random;
     [SerializeField] private GameObject[] m_liste;
+    AudioSource m_audioBoom;
+    [SerializeField]private GameObject particule;
+    [SerializeField]private AudioClip m_explosionSound;
 
     public void Awake()
     {
         SetRandomDirection();
-        
+        m_audioBoom = GetComponent<AudioSource>();
+        if (GetComponent<LaserDamage>() == null) return;
+        m_liste = GetComponent<LaserDamage>().liste == null ? null : GetComponent<LaserDamage>().liste;
+        particule = GetComponent<LaserDamage>().particule;
+        m_explosionSound = GetComponent<LaserDamage>().boomSound;
+
+
     }
     private void Update()
     {
@@ -30,6 +40,11 @@ public class meteordirection : EnemyBaseClass
     public void SetRandomDirection()
     {
         random = new Vector3(Random.Range(-10, 10), Random.Range(-5, 5));
+        direction = -transform.position + random;
+    }
+    public void SetRandomDirectionUfo()
+    {
+        random = new Vector3(Random.Range(-10, 10), Random.Range(-10, 10));
         direction = -transform.position + random;
     }
 
@@ -52,6 +67,11 @@ public class meteordirection : EnemyBaseClass
                 Instantiate(m_liste[asteroide], transform.position + new Vector3(Random.Range (0,0.5f),Random.Range(0,0.5f),0), Quaternion.identity);
             }
         }
+
+
+        AudioSource.PlayClipAtPoint(m_explosionSound, transform.position);
+        Instantiate(particule, transform.position, Quaternion.identity);
         Destroy(gameObject);
+
     }
 }

@@ -9,6 +9,10 @@ TagManager:
   - Petit
   - Laser
   - Roquette
+  - UFO
+  - laserUFO
+  - Projectile
+  - Vaisseau
   - Projectile
   layers:
   - Default
@@ -19,10 +23,10 @@ TagManager:
   - UI
   - Friendly
   - Enemy
-  - 
-  - 
-  - 
-  - 
+  - Laser
+  - Vaisseau
+  - UFO
+  - Meteor
   - 
   - 
   - 

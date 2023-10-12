@@ -177,10 +177,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_lives: 4
-  m_speed: 0.5
-  maxLifeTime: 20
-  maxLife: 5
-  points: 5
+  m_speed: 0.4
+  enemyData: {fileID: 11400000, guid: 18822097bec314245b53216cee6e6a74, type: 2}
   chocClip: {fileID: 8300000, guid: f087ba2c78321a44f95b7684b0315490, type: 3}
   smallAsteroidPrefab: {fileID: 6275952170836928255, guid: b83ea901fdd3bed4aa79890c0e640c43, type: 3}
 --- !u!82 &4999173577670095982
@@ -192,7 +190,7 @@ AudioSource:
   m_GameObject: {fileID: 8619275650118808469}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1819368088714695573, guid: 014c337e9baea7d4d8601467f28d8ee8, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1

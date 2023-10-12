@@ -6,20 +6,21 @@ namespace Mika
     [RequireComponent(typeof(AudioSource))]
     public class Enemy : EnemyBaseClass
     {
-        [SerializeField] protected float maxLifeTime = 20f;
+        [SerializeField] private EnemyData enemyData;
         protected float lifeTime = 0f;
-        [Range(1, 100)]
-        [SerializeField] protected int maxLife = 1;
-        [Range(1, 100)]
-        [SerializeField] protected int points = 1;
-        public bool IsAlive { get => this.gameObject.activeInHierarchy && m_lives > 0 && this.lifeTime < this.maxLifeTime; }
+        public bool IsAlive { get => m_lives > 0 && this.lifeTime < this.enemyData.maxLifetime && this.gameObject.activeInHierarchy; }
         protected AudioSource audioSource;
 
         protected virtual void Awake()
         {
+            this.audioSource = GetComponent<AudioSource>();
             ResetLife();
             ResetLifetime();
-            this.audioSource = GetComponent<AudioSource>();
+        }
+
+        public string GetEnemyName()
+        {
+            return this.enemyData.enemyName;
         }
 
         internal override void TakeDamage(int m_damagePoints)
@@ -40,7 +41,7 @@ namespace Mika
             }
             // désactivé après 5s
             lifeTime += Time.deltaTime;
-            if (lifeTime > maxLifeTime)
+            if (lifeTime > this.enemyData.maxLifetime)
             {
                 gameObject.SetActive(false);
             }
@@ -53,12 +54,12 @@ namespace Mika
 
         public void ResetLife()
         {
-            m_lives = Math.Max(1, this.maxLife);
+            m_lives = Math.Max(1, this.enemyData.maxLives);
         }
 
         public virtual int GetPointValue()
         {
-            return points;
+            return this.enemyData.points;
         }
     }
 }

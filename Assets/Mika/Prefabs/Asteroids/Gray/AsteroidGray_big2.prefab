@@ -178,9 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_lives: 3
   m_speed: 0.5
-  maxLifeTime: 20
-  maxLife: 3
-  points: 3
+  enemyData: {fileID: 11400000, guid: e1844dfb8555d8d4b999c06659842624, type: 2}
   chocClip: {fileID: 8300000, guid: f087ba2c78321a44f95b7684b0315490, type: 3}
 --- !u!82 &7415870170228270450
 AudioSource:
@@ -191,7 +189,7 @@ AudioSource:
   m_GameObject: {fileID: 7455513564810380590}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1819368088714695573, guid: 014c337e9baea7d4d8601467f28d8ee8, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1

@@ -36,21 +36,16 @@ namespace Mika
 
         public GameObject Get()
         {
-            for (int i = 0; i < transform.childCount; i++)
+            for (int i = 0; i < this.transform.childCount; i++)
             {
                 GameObject asteroid = transform.GetChild(i).gameObject;
-                if (!asteroid.activeSelf)
+                if (!asteroid.activeInHierarchy)
                 {
-                    if (asteroid.TryGetComponent(out DefaultAsteroid defaultAsteroidScript))
-                    {
-                        defaultAsteroidScript.ResetLifetime();
-                    }
                     asteroid.SetActive(true);
                     return asteroid;
                 }
             }
             GameObject o = CreateAsteroid();
-            o.SetActive(true);
             return o;
         }
         private GameObject CreateAsteroid()
@@ -62,14 +57,14 @@ namespace Mika
         private GameObject CreateAsteroid(GameObject asteroidPrefab)
         {
             GameObject o = Instantiate(asteroidPrefab, asteroidPrefab.transform.position, asteroidPrefab.transform.rotation);
-            o.transform.SetParent(transform);
+            o.transform.SetParent(this.transform);
             o.SetActive(false);
             return o;
         }
 
         private GameObject[] GetAsteroidModels()
         {
-            return asteroidModel == AsteroidModel.BROWN ? asteroidBrownPrefabs : asteroidGrayPrefabs;
+            return this.asteroidModel == AsteroidModel.BROWN ? this.asteroidBrownPrefabs : this.asteroidGrayPrefabs;
         }
 
         public enum AsteroidModel { BROWN, GRAY }

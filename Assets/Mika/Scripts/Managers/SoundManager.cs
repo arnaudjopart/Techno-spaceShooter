@@ -27,6 +27,7 @@ namespace Mika
 
         [SerializeField] private SoundChannel[] soundChannels;
         [SerializeField] private AudioMixer audioMixer;
+        [SerializeField] private AudioClip chocClip;
 
         private void Start()
         {
@@ -153,6 +154,12 @@ namespace Mika
         private SoundChannel FindChannel(string channelName)
         {
             return this.soundChannels.Where(c => c.name.Equals(channelName)).First();
+        }
+
+        public void PlayChocClipAt(Vector3 pos)
+        {
+            float hostileVolume = Mathf.Pow(10f, GetHostileVolume() / 20);
+            AudioSource.PlayClipAtPoint(this.chocClip, this.transform.position, hostileVolume);
         }
     }
 

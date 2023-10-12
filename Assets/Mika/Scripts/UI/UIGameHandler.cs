@@ -23,14 +23,12 @@ namespace Mika
         [SerializeField] private Sprite weaponSprite1; // TODO scriptable objects
         [SerializeField] private Sprite weaponSprite2;
         [SerializeField] private Image weaponIcon;
-        [SerializeField] private string mainSceneName = "MikaMainMenu_Scene";
-        [SerializeField] private string restartGameSceneName = "MikaInput_Scene";
 
         private void OnEnable()
         {
             GameManager.Instance.OnScoreUpdateEvent += UpdateScore;
             EventManager.GameOverEvent += OnGameOver;
-            EventManager.PlayerLostLifeEvent += OnLifeChanged;
+            EventManager.PlayerLifeChangedEvent += OnLifeChanged;
             EventManager.PlayerChangeWeaponEvent += OnPlayerWeaponChanged;
         }
 
@@ -38,7 +36,7 @@ namespace Mika
         {
             GameManager.Instance.OnScoreUpdateEvent -= UpdateScore;
             EventManager.GameOverEvent -= OnGameOver;
-            EventManager.PlayerLostLifeEvent -= OnLifeChanged;
+            EventManager.PlayerLifeChangedEvent -= OnLifeChanged;
             EventManager.PlayerChangeWeaponEvent -= OnPlayerWeaponChanged;
         }
 

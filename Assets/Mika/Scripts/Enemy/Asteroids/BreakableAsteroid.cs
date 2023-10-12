@@ -8,8 +8,8 @@ namespace Mika
 
         internal override void TakeDamage(int m_damagePoints)
         {
-            // base.TakeDamage(m_damagePoints);
-            if (--m_lives <= 0)
+            base.TakeDamage(m_damagePoints);
+            if (m_lives <= 0)
             {
                 gameObject.SetActive(false);
                 for (int i = 0; i < 3; i++)

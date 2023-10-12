@@ -842,6 +842,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SoundManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5013968813884050582, guid: 3777f02bb363a7841b00b0427e77434f, type: 3}
+      propertyPath: chocClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f087ba2c78321a44f95b7684b0315490, type: 3}
     - target: {fileID: 7771635639919990594, guid: 3777f02bb363a7841b00b0427e77434f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

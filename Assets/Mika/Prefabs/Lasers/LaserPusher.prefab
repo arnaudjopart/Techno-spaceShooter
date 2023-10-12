@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1988388359077472057}
   - component: {fileID: 2634916817588905678}
   - component: {fileID: 1011293616909597848}
-  - component: {fileID: 4003623835935044550}
+  - component: {fileID: -2671813666444326731}
   m_Layer: 0
   m_Name: LaserPusher
   m_TagString: Untagged
@@ -28,13 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8793711074390277533}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.5, y: -2.582, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5024547059647698592
 SpriteRenderer:
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3460cc142024fad44a1980e6a38d5897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4003623835935044550
+--- !u!114 &-2671813666444326731
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -166,8 +166,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8793711074390277533}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc06413d5392a604aa3f500a9ce08974, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f22096a0c4b9ee4b87b07679be8a684, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_speed: 1
-  m_damagePoints: 5
+  m_damagePoints: 1

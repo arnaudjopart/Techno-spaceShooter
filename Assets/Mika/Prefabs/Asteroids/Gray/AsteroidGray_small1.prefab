@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -7219769341929391796}
   - component: {fileID: -7155927322040129}
   - component: {fileID: 7330067605229211756}
+  - component: {fileID: 2375156862744682439}
   m_Layer: 0
   m_Name: AsteroidGray_small1
   m_TagString: Untagged
@@ -177,8 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_lives: 1
   m_speed: 1.5
-  maxLifeTime: 20
-  points: 1
+  enemyData: {fileID: 11400000, guid: 41b4bfba30871334c9dd1d65fa194d89, type: 2}
   chocClip: {fileID: 8300000, guid: f087ba2c78321a44f95b7684b0315490, type: 3}
 --- !u!82 &7330067605229211756
 AudioSource:
@@ -189,7 +189,7 @@ AudioSource:
   m_GameObject: {fileID: 6275952170836928255}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1819368088714695573, guid: 014c337e9baea7d4d8601467f28d8ee8, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -276,3 +276,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2375156862744682439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6275952170836928255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6fa06b683bbbd941b303b1e9671c4ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

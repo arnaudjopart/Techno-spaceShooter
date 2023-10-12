@@ -10,7 +10,10 @@ namespace Mika
         {
             if (IsAlive)
             {
-                this.audioSource.PlayOneShot(this.chocClip);
+                if (!this.audioSource.isPlaying)
+                {
+                    this.audioSource.PlayOneShot(this.chocClip);
+                }
                 base.TakeDamage(m_damagePoints);
             }
         }

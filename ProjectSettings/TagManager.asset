@@ -9,6 +9,7 @@ TagManager:
   - Petit
   - Laser
   - Roquette
+  - Projectile
   layers:
   - Default
   - TransparentFX
@@ -16,8 +17,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Friendly
+  - Enemy
   - 
   - 
   - 

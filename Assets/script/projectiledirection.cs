@@ -11,8 +11,8 @@ public class projectiledirection : MonoBehaviour
         transform.Translate((Vector3.up) * Time.deltaTime * speed);
     }
     private void Awake()
-    {
-
+    {        
+        Destroy(gameObject, 2f);
     }
 
 

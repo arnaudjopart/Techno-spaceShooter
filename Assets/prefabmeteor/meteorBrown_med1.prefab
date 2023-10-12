@@ -194,6 +194,7 @@ MonoBehaviour:
   - {fileID: 1458167018991908628, guid: 666d3e45cc5617943a2fbc6039756951, type: 3}
   - {fileID: 4298662464346640786, guid: ad67d3509138c9948905c9ea98f649d4, type: 3}
   boomSound: {fileID: 8300000, guid: cfaebe8ed99745540adeeb8300c7a79c, type: 3}
+  particule: {fileID: 1031375519078521092, guid: 73323a0c05444c4498d8df6c895e7327, type: 3}
 --- !u!82 &-5169871787509743783
 AudioSource:
   m_ObjectHideFlags: 0
@@ -205,8 +206,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_PlayOnAwake: 0
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -250,7 +251,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

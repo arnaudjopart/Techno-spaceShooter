@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class deplacement : InputListenerBase
 {
-    [SerializeField] GameObject projectile;
+    [SerializeField] public GameObject projectile;
     [SerializeField] GameObject roquette;
     [SerializeField] Vector3 projectileOffset;
     [SerializeField] int speed;

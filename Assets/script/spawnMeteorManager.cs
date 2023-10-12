@@ -12,6 +12,7 @@ public class spawnMeteorManager : MonoBehaviour
     [SerializeField] GameObject[] meteors;
     private bool peutspawn;
     int nbmeteor;
+    int waves;
     [SerializeField] GameObject ufo;
     private bool peutSpawnUfo;
     private int nbUfo;
@@ -38,13 +39,15 @@ public class spawnMeteorManager : MonoBehaviour
         }
         if (peutspawn)
         {
-
             SpawnMeteor();
         }
     }
     public void SpawnMeteor()
     {
+
+        int meteor = Random.Range(0, meteors.Length-1);
         int meteor = Random.Range(0, meteors.Length - 1);
+
         spawnpos = Random.insideUnitCircle.normalized * 12;
         if (peutspawn && nbmeteor <= 10)
         {

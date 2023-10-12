@@ -7,7 +7,7 @@ using static UnityEngine.ParticleSystem;
 public class meteordirection : EnemyBaseClass
 {
     [SerializeField] float speed;
-    [SerializeField] float rotation=45f;
+    [SerializeField] float rotation = 45f;
     Vector3 direction;
     Vector3 random;
     [SerializeField] private GameObject[] m_liste;
@@ -24,12 +24,11 @@ public class meteordirection : EnemyBaseClass
         particule = GetComponent<LaserDamage>().particule;
         m_explosionSound = GetComponent<LaserDamage>().boomSound;
 
-
     }
     private void Update()
     {
-        transform.position+= direction.normalized * (Time.deltaTime * speed);
-        transform.Rotate(0,0, rotation *Time.deltaTime);
+        transform.position += direction.normalized * (Time.deltaTime * speed);
+        transform.Rotate(0, 0, rotation * Time.deltaTime);
     }
 
     public void SetDirection(Vector3 _direction)
@@ -52,7 +51,7 @@ public class meteordirection : EnemyBaseClass
     {
         random = new Vector3(Random.Range(-10, 10), Random.Range(-5, 5));
         direction = -transform.position + random;
-        
+
     }
 
     internal override void TakeDamage(int m_damagePoints)
@@ -74,4 +73,5 @@ public class meteordirection : EnemyBaseClass
         Destroy(gameObject);
 
     }
+
 }

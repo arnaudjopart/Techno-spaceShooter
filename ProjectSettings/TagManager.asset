@@ -21,11 +21,16 @@ TagManager:
   - 
   - Water
   - UI
+  - Player
+  - Laser
+  - Asteroids
+  - UFO
+  - ufoBombs
+  - PowerUp
   - Friendly
   - Enemy
   - Laser
   - Vaisseau
-  - UFO
   - Meteor
   - 
   - 

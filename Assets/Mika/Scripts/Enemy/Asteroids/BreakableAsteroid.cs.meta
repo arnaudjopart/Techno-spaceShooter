@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 06d66fc990780f340a9e72c56bebda1e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - enemyData: {instanceID: 0}
+  - chocClip: {fileID: 8300000, guid: f087ba2c78321a44f95b7684b0315490, type: 3}
+  - smallAsteroidPrefab: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,74 +1,77 @@
 using UnityEngine;
 
-[DisallowMultipleComponent]
-public sealed class AsteroidPool : MonoBehaviour
+namespace Mika
 {
-    #region Singleton
-    public static AsteroidPool Instance { get; private set; }
-
-    private void Awake()
+    [DisallowMultipleComponent]
+    public sealed class AsteroidPool : MonoBehaviour
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else if (Instance != this)
-        {
-            Destroy(this.gameObject);
-            return;
-        }
-    }
-    #endregion
-    [SerializeField] private GameObject[] asteroidBrownPrefabs;
-    [SerializeField] private GameObject[] asteroidGrayPrefabs;
-    [SerializeField] private AsteroidModel asteroidModel;
+        #region Singleton
+        public static AsteroidPool Instance { get; private set; }
 
-    private void Start()
-    {
-        GameObject[] asteroidPrefabs = GetAsteroidModels();
-        for (int i = 0; i < asteroidPrefabs.Length; i++)
+        private void Awake()
         {
-            CreateAsteroid(asteroidPrefabs[Random.Range(0, asteroidPrefabs.Length)]);
-        }
-    }
-
-    public GameObject Get()
-    {
-        for (int i = 0; i < this.transform.childCount; i++)
-        {
-            GameObject asteroid = this.transform.GetChild(i).gameObject;
-            if (!asteroid.activeSelf)
+            if (Instance == null)
             {
-                if (asteroid.TryGetComponent(out DefaultAsteroid defaultAsteroidScript))
-                {
-                    defaultAsteroidScript.ResetLifetime();
-                }
-                asteroid.SetActive(true);
-                return asteroid;
+                Instance = this;
+            }
+            else if (Instance != this)
+            {
+                Destroy(gameObject);
+                return;
             }
         }
-        GameObject o = CreateAsteroid();
-        o.SetActive(true);
-        return o;
-    }
-    private GameObject CreateAsteroid()
-    {
-        GameObject[] asteroidPrefabs = GetAsteroidModels();
-        return CreateAsteroid(asteroidPrefabs[Random.Range(0, asteroidPrefabs.Length)]);
-    }
+        #endregion
+        [SerializeField] private GameObject[] asteroidBrownPrefabs;
+        [SerializeField] private GameObject[] asteroidGrayPrefabs;
+        [SerializeField] private AsteroidModel asteroidModel;
 
-    private GameObject CreateAsteroid(GameObject asteroidPrefab)
-    {
-        GameObject o = Instantiate(asteroidPrefab, asteroidPrefab.transform.position, asteroidPrefab.transform.rotation);
-        o.transform.SetParent(this.transform);
-        o.SetActive(false);
-        return o;
-    }
+        private void Start()
+        {
+            GameObject[] asteroidPrefabs = GetAsteroidModels();
+            for (int i = 0; i < asteroidPrefabs.Length; i++)
+            {
+                CreateAsteroid(asteroidPrefabs[Random.Range(0, asteroidPrefabs.Length)]);
+            }
+        }
 
-    private GameObject[] GetAsteroidModels()
-    {
-        return this.asteroidModel == AsteroidModel.BROWN ? this.asteroidBrownPrefabs : this.asteroidGrayPrefabs;
-    }
+        public GameObject Get()
+        {
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                GameObject asteroid = transform.GetChild(i).gameObject;
+                if (!asteroid.activeSelf)
+                {
+                    if (asteroid.TryGetComponent(out DefaultAsteroid defaultAsteroidScript))
+                    {
+                        defaultAsteroidScript.ResetLifetime();
+                    }
+                    asteroid.SetActive(true);
+                    return asteroid;
+                }
+            }
+            GameObject o = CreateAsteroid();
+            o.SetActive(true);
+            return o;
+        }
+        private GameObject CreateAsteroid()
+        {
+            GameObject[] asteroidPrefabs = GetAsteroidModels();
+            return CreateAsteroid(asteroidPrefabs[Random.Range(0, asteroidPrefabs.Length)]);
+        }
 
-    public enum AsteroidModel { BROWN, GRAY }
+        private GameObject CreateAsteroid(GameObject asteroidPrefab)
+        {
+            GameObject o = Instantiate(asteroidPrefab, asteroidPrefab.transform.position, asteroidPrefab.transform.rotation);
+            o.transform.SetParent(transform);
+            o.SetActive(false);
+            return o;
+        }
+
+        private GameObject[] GetAsteroidModels()
+        {
+            return asteroidModel == AsteroidModel.BROWN ? asteroidBrownPrefabs : asteroidGrayPrefabs;
+        }
+
+        public enum AsteroidModel { BROWN, GRAY }
+    }
 }

@@ -1,19 +1,22 @@
 using UnityEngine;
 
-public class ParticleLaserCollision : MonoBehaviour
+namespace Mika
 {
-    private ProjectileLogicBaseClass m_projectileLogic;
-
-    void Start()
+    public class ParticleLaserCollision : MonoBehaviour
     {
-        m_projectileLogic = GetComponent<ProjectileLogicBaseClass>();
-    }
+        private ProjectileLogicBaseClass m_projectileLogic;
 
-    private void OnParticleCollision(GameObject collision)
-    {
-        if (collision.GetComponent<EnemyBaseClass>() != null)
+        void Start()
         {
-            m_projectileLogic.ApplyEffect(collision.GetComponent<EnemyBaseClass>());
+            m_projectileLogic = GetComponent<ProjectileLogicBaseClass>();
+        }
+
+        private void OnParticleCollision(GameObject collision)
+        {
+            if (collision.GetComponent<EnemyBaseClass>() != null)
+            {
+                m_projectileLogic.ApplyEffect(collision.GetComponent<EnemyBaseClass>());
+            }
         }
     }
 }

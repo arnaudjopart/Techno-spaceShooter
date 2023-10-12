@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: cc857adb05e1d9f4b80d59de01a29605
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - chocClip: {fileID: 8300000, guid: f087ba2c78321a44f95b7684b0315490, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

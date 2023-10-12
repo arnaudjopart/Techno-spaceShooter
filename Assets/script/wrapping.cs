@@ -28,22 +28,18 @@ public class wrapping : MonoBehaviour
 
         if (screenPos.x <= 0 && lastPosition.x < 0)
         {
-            Debug.Log("je sors à gauche");
             transform.position = new Vector2(rightSideOffScreenInWorld, transform.position.y);
         }
         if (screenPos.x >= 1 && lastPosition.x > 0)
         {
-            Debug.Log("je sors à droite");
             transform.position = new Vector2(leftSideOffScreenInWorld,transform.position.y);
         }
          if (screenPos.y <= 0 && lastPosition.y < 0)
         {
-            Debug.Log("je sors en bas");
             transform.position = new Vector2(transform.position.x, topOffScreenInWorld);
         }
          if(screenPos.y >= 1 && lastPosition.y > 0)
         {
-            Debug.Log("je sors en haut");
             transform.position = new Vector2(transform.position.x, bottomOffScreenInWorld);
         }
     }

@@ -1,24 +1,54 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-[DefaultExecutionOrder(1000)]
-public class UIMainMenuHandler : MonoBehaviour
+namespace Mika
 {
-    public void LoadInputScene()
+    [DefaultExecutionOrder(1000)]
+    public class UIMainMenuHandler : MonoBehaviour
     {
-        SceneManager.LoadScene("MikaInput_Scene");
-    }
+        [SerializeField] private GameObject layoutMain, layoutOptions;
+        [SerializeField] private Slider masterSlider, musicSlider, ambientSlider, playerSlider, hostileSlider;
+        [SerializeField] private Toggle toggleVolume;
 
-    public void LoadProjectileScene()
-    {
-        SceneManager.LoadScene("MikaProjectileScene");
-    }
+        private void Start()
+        {
+            masterSlider.value = SoundManager.Instance.GetMasterVolume();
+            musicSlider.value = SoundManager.Instance.GetMusicVolume();
+            ambientSlider.value = SoundManager.Instance.GetAmbientVolume();
+            playerSlider.value = SoundManager.Instance.GetPlayerVolume();
+            hostileSlider.value = SoundManager.Instance.GetHostileVolume();
+            toggleVolume.isOn = SoundManager.Instance.IsVolumeActive();
+        }
 
-    public void QuitGame()
-    {
+        public void LoadInputScene()
+        {
+            SceneManager.LoadScene("MikaInput_Scene");
+        }
+
+        public void LoadProjectileScene()
+        {
+            SceneManager.LoadScene("MikaProjectileScene");
+        }
+
+        public void QuitGame()
+        {
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
+            UnityEditor.EditorApplication.isPlaying = false;
 #endif
-        Application.Quit();
+            Application.Quit();
+        }
+
+        public void OpenOptionsMenu()
+        {
+            layoutMain.SetActive(false);
+            layoutOptions.SetActive(true);
+        }
+
+        public void BackToMainMenu()
+        {
+            layoutOptions.SetActive(false);
+            layoutMain.SetActive(true);
+        }
     }
 }

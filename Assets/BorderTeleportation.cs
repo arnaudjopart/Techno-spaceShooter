@@ -12,12 +12,26 @@ public class BorderTeleportation : MonoBehaviour
 
     protected virtual void LateUpdate()
     {
-        if (!this.wasInsideBounds && !(this.wasInsideBounds = !IsOutsideXBounds() && !IsOutsideYBounds()))
+        bool isOutsideXBounds = IsOutsideXBounds();
+        bool isOutsideYBounds = IsOutsideYBounds();
+        // doit avoir été au moins une fois à l'intérieur des limites
+        if (this.wasInsideBounds)
         {
-            return;
+            if (isOutsideXBounds || isOutsideYBounds)
+            {
+                OnReachBounds(isOutsideXBounds, isOutsideYBounds);
+            }
         }
+        else
+        {
+            this.wasInsideBounds = !isOutsideXBounds && !isOutsideYBounds;
+        }
+    }
+
+    protected virtual void OnReachBounds(bool isOutsideXBounds, bool isOutsideYBounds)
+    {
         // téléporte le joueur s'il est hors des limites ou non
-        this.transform.position = new Vector3((IsOutsideXBounds() ? -1 : 1) * this.transform.position.x, (IsOutsideYBounds() ? -1 : 1) * this.transform.position.y, this.transform.position.z);
+        this.transform.position = new Vector3((isOutsideXBounds ? -1 : 1) * this.transform.position.x, (isOutsideYBounds ? -1 : 1) * this.transform.position.y, this.transform.position.z);
     }
 
     protected virtual bool IsOutsideXBounds()

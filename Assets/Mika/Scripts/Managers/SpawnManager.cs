@@ -30,21 +30,36 @@ namespace Mika
         private WaitForSeconds waitDelay, waitInterval;
         [SerializeField] Collider bgCollider;
         private Bounds bounds;
+        public bool IsSpawning { get; private set; } = false;
+        private Coroutine spawnAsteroidsCoroutine;
 
 
         private void Start()
         {
-            this.waitDelay = new WaitForSeconds(this.spawnDelay);
-            this.waitInterval = new WaitForSeconds(this.spawnInterval);
             // utilise les bounds du mesh collider du background
             this.bounds = this.bgCollider.bounds;
-            StartCoroutine(SpawnAsteroids());
         }
 
-        private IEnumerator SpawnAsteroids()
+        public void StartSpawn(int level)
         {
+            this.spawnAsteroidsCoroutine = StartCoroutine(SpawnAsteroidsCoroutine(level));
+        }
+
+        public void StopSpawn()
+        {
+            if (this.spawnAsteroidsCoroutine != null)
+            {
+                StopCoroutine(this.spawnAsteroidsCoroutine);
+            }
+        }
+
+        private IEnumerator SpawnAsteroidsCoroutine(int level)
+        {
+            this.waitDelay = new WaitForSeconds(this.spawnDelay);
+            this.waitInterval = new WaitForSeconds(this.spawnInterval - Mathf.Min(1f, 0.1f * (level / 3)));
             yield return waitDelay;
-            while (true)
+            this.IsSpawning = true;
+            while (GameManager.Instance.GameState == GameStates.STARTED)
             {
                 bool spawnOnXSide = OnChance(); // choisit x ou y pour l'endroit d'apparition
                 Vector3 wantedPos;
@@ -58,11 +73,12 @@ namespace Mika
                     wantedPos = new Vector3(GetRandomXInsideBounds(), OnChance() ? bounds.min.y : bounds.max.y, 0f);
                 }
                 // définit un nouveau centre, étant par défaut (0,0,0), pour créer le vecteur direction
-                Vector3 newCenter = spawnOnXSide ? new Vector3(0f, GetRandomYInsideBounds() * 0.95f, 0f) : new Vector3(GetRandomXInsideBounds() * 0.95f, 0f, 0f);
+                Vector3 newCenter = spawnOnXSide ? new Vector3(0f, GetRandomYInsideBounds() * 0.8f, 0f) : new Vector3(GetRandomXInsideBounds() * 0.8f, 0f, 0f);
                 Vector3 direction = newCenter - wantedPos;
                 SpawnAsteroid(wantedPos, direction.normalized * Random.Range(this.asteroidMinSpeed, this.asteroidMaxSpeed));
                 yield return this.waitInterval;
             }
+            this.IsSpawning = false;
         }
 
         private float GetRandomXInsideBounds()
@@ -83,7 +99,7 @@ namespace Mika
             {
                 enemyScript.ResetStates();
             }
-            if (o.TryGetComponent(out AsteroidMove asteroidMoveScript))
+            if (o.TryGetComponent(out SimpleMoveForward asteroidMoveScript))
             {
                 asteroidMoveScript.SetPositionAndVelocity(pos, velocity);
             }

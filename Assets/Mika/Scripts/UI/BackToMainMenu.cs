@@ -1,10 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class BackToMainMenu : MonoBehaviour
+namespace Mika
 {
-    public void ChangeScene()
+    public class BackToMainMenu : MonoBehaviour
     {
-        SceneManager.LoadScene("MikaMainMenu_Scene");
+        public void ChangeScene()
+        {
+            SceneManager.LoadScene("MikaMainMenu_Scene");
+        }
     }
 }

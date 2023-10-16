@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Mika
@@ -9,9 +8,10 @@ namespace Mika
         [SerializeField] private float moveSpeed;
         [SerializeField] private float rotationSpeed;
 
-        [Header("Projectile Settings")]
-        [SerializeField] private GameObject[] availableProjectilePrefab;
-        private WeaponType currentWeapon;
+        [Header("Weapon Settings")]
+        [SerializeField] private WeaponData[] weaponData;
+        private int currentWeaponId;
+        private WeaponData currentWeapon;
 
         [Header("Sound Settings")]
         [SerializeField] private AudioClip playerAttackClip;
@@ -20,38 +20,53 @@ namespace Mika
         [Header("Life Settings")]
         [SerializeField] private int maxLives = 3;
         public int Lives { get; private set; }
+        private SpriteRenderer spriteRenderer;
+        private CapsuleCollider2D shipCollider;
 
         private void Awake()
         {
             this.audioSource = GetComponent<AudioSource>();
+            this.spriteRenderer = GetComponent<SpriteRenderer>();
+            this.shipCollider = GetComponent<CapsuleCollider2D>();
+            SetShipModel();
         }
 
         private void Start()
         {
-            Time.timeScale = 1f;
             ResetLife();
             ChangeWeapon(0);
         }
 
-        public override void ProcessInputAxes(Vector2 input)
+        private void SetShipModel()
         {
-            transform.Rotate(-Vector3.forward, input.x * rotationSpeed * Time.deltaTime);
+            this.spriteRenderer.sprite = MainManager.Instance.ShipModel;
+            bool isUfo = MainManager.Instance.IsUfo;
+            this.shipCollider.offset = isUfo ? Vector2.zero : new Vector2(0f, -0.1f);
+            this.shipCollider.size = isUfo ? Vector2.one * 1.12f : new Vector2(1.12f, 0.6f);
         }
 
-        public override void ProcessKeyCodeDown(KeyCode _keyCode)
+        public override void ProcessMousePosition(Vector2 _mousePosition)
         {
-            if (_keyCode == KeyCode.Space)
+            if (GameManager.Instance?.GameState != GameStates.STARTED)
             {
-                FireSelectedWeapon();
+                return;
             }
-            else if (_keyCode == KeyCode.LeftAlt)
-            {
-                ChangeWeapon();
-            }
+            // déplace et oriente le joueur d'après la position de la souris
+            Vector3 worldPos = Camera.main.ScreenToWorldPoint((Vector3)_mousePosition);
+            worldPos.z = 0f;
+            Vector3 targetDir = (worldPos - this.transform.position).normalized;
+            Debug.DrawLine(this.transform.position, targetDir * 5f, Color.white);
+            Vector3 velocity = this.moveSpeed * Vector3.up;
+            this.transform.Translate(velocity * Time.deltaTime);
+            this.transform.rotation = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(Vector3.forward, targetDir), rotationSpeed * Time.deltaTime);  
         }
 
         public override void ProcessMouseButtonDown(int _button)
         {
+            if (GameManager.Instance?.GameState != GameStates.STARTED)
+            {
+                return;
+            }
             if (_button == 0)
             {
                 FireSelectedWeapon();
@@ -64,7 +79,6 @@ namespace Mika
 
         private void FireSelectedWeapon()
         {
-            // utilise l'arme sélectionnée
             if (!this.audioSource.isPlaying)
             {
                 this.audioSource.PlayOneShot(this.playerAttackClip);
@@ -73,24 +87,24 @@ namespace Mika
             offset *= 0.5f;
             Vector3 spawnPos = transform.position + offset;
             Quaternion wantedRotation = transform.rotation;
-            GameObject o = Instantiate(this.availableProjectilePrefab[(int)this.currentWeapon], spawnPos, wantedRotation);
-            o.transform.SetParent(transform);
-            Destroy(o, 2f);
-        }
-
-        private void Update()
-        {
-            // déplace le joueur
-            this.transform.Translate(this.moveSpeed * Time.deltaTime * Vector3.up);
+            GameObject o = WeaponPool.Instance.Get(this.currentWeapon);
+            o.transform.SetPositionAndRotation(spawnPos, wantedRotation);
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            collision.gameObject.SetActive(false);
+            if (GameManager.Instance?.GameState != GameStates.STARTED)
+            {
+                return;
+            }
+            if (collision.gameObject.TryGetComponent(out Enemy enemy))
+            {
+                enemy.Die(false);
+            }
             LoseLife(1);
             if (Lives <= 0)
             {
-                EventManager.InvokeGameOverEvent();
+                GameManager.Instance?.GameOver();
             }
         }
 
@@ -109,16 +123,16 @@ namespace Mika
             SetLife(this.maxLives);
         }
 
-        private void ChangeWeapon(WeaponType weaponType)
+        private void ChangeWeapon(int weaponId)
         {
-            // change d'arme
-            this.currentWeapon = weaponType;
+            this.currentWeaponId = weaponId;
+            this.currentWeapon = this.weaponData[this.currentWeaponId];
             EventManager.InvokePlayerChangeWeaponEvent(this.currentWeapon);
         }
 
         private void ChangeWeapon()
         {
-            ChangeWeapon((WeaponType)(((int)this.currentWeapon + 1) % Enum.GetNames(typeof(WeaponType)).Length));
+            ChangeWeapon((this.currentWeaponId + 1) % this.weaponData.Length);
         }
     }
 }

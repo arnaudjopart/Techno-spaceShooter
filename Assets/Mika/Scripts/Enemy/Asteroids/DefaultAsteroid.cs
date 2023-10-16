@@ -16,7 +16,7 @@ namespace Mika
             if (m_lives <= 0)
             {
                 gameObject.SetActive(false);
-                if (this.smallAsteroidPrefabs.Length > 0 && this.breakingChance <= Random.Range(1, 101))
+                if (this.smallAsteroidPrefabs.Length > 0 && Random.Range(1, 101) <= this.breakingChance)
                 {
                     for (int i = 0; i < this.breakingParts; i++)
                     {

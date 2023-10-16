@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8582262418378181602
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 515282279376973546}
+  - component: {fileID: 6989375175845427862}
+  - component: {fileID: 6634808813519867936}
+  m_Layer: 0
+  m_Name: SpawnManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &515282279376973546
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8582262418378181602}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6989375175845427862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8582262418378181602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc82c5fd98c0346458bd4fe5317cd366, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnDelay: 3
+  spawnInterval: 1.5
+  asteroidMinSpeed: 1
+  asteroidMaxSpeed: 2
+  bgCollider: {fileID: 0}
+--- !u!114 &6634808813519867936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8582262418378181602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d77fb57683398d24b8a68d42806e5cda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asteroidBrownPrefabs:
+  - {fileID: 8619275650118808469, guid: 739e1446d645fd14fae71d4e94ff6391, type: 3}
+  - {fileID: 5693799378637430259, guid: 493b3370331dc0d4cb758430d9b0072d, type: 3}
+  - {fileID: 3474657840782432336, guid: 84c4c7700ef52b2418e8f8e05d356835, type: 3}
+  - {fileID: 3595784774253865038, guid: 38da2e20433321d4e9b3fa600a3f57aa, type: 3}
+  - {fileID: 1458167018991908628, guid: 373ec56cbf950b449a311675ca8a2532, type: 3}
+  - {fileID: 4298662464346640786, guid: 0b4767767cc52c642935364941f4f146, type: 3}
+  - {fileID: 8619275650118808469, guid: 9e138e108ea818e4b98b6b5fcb841f98, type: 3}
+  - {fileID: 7434170014083389511, guid: 3c683616eec80704fbc8b0812a904da9, type: 3}
+  asteroidGrayPrefabs:
+  - {fileID: 8582500377534403166, guid: 019038f0fc7c41849b934fadf1c8b10d, type: 3}
+  - {fileID: 7455513564810380590, guid: 68f890d46d3420542bb409fdba08c9c4, type: 3}
+  - {fileID: 4867974424992624847, guid: 4f600e2e7c355b4409fe7961174c2e49, type: 3}
+  - {fileID: 4263628875862333980, guid: 351d6be1f8665724dbe6f209d16bbfe6, type: 3}
+  - {fileID: 6275952170836928255, guid: b83ea901fdd3bed4aa79890c0e640c43, type: 3}
+  - {fileID: 6500342517958007045, guid: a557844ba8e53974c9548cc3159eb70d, type: 3}
+  - {fileID: 8619275650118808469, guid: db15061d0679dbf49b08a7ad22866fea, type: 3}
+  - {fileID: 7434170014083389511, guid: 3c683616eec80704fbc8b0812a904da9, type: 3}
+  asteroidModel: 0

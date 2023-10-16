@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4522912767755653224
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3034428193006596776}
+  - component: {fileID: 6206412207309321593}
+  m_Layer: 0
+  m_Name: MainManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3034428193006596776
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4522912767755653224}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6206412207309321593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4522912767755653224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b85f2b5a38b3ef549b6a34d7c22380a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shipModels:
+  - {fileID: 21300000, guid: 953c61cea62d94d41918a787e61f85aa, type: 3}
+  - {fileID: 21300000, guid: 763e3d0fb93c0614e8cd1a8fb23c55ec, type: 3}
+  - {fileID: 21300000, guid: b9966fcf59dc2304f8cb6c88b5e8bf65, type: 3}
+  - {fileID: 21300000, guid: f839b5135ad7acb46ab92ec0952591ba, type: 3}
+  - {fileID: 21300000, guid: 39f0a37a0d428fd488a7d82249bad3b5, type: 3}
+  - {fileID: 21300000, guid: 391caae1d0e471a4c827386ed8cecdb5, type: 3}
+  - {fileID: 21300000, guid: d7138fa44407eb44fa3b0192707f425e, type: 3}
+  - {fileID: 21300000, guid: 09f58fdb476012344ba022d2da47f7ff, type: 3}
+  - {fileID: 21300000, guid: b93d0218f0335b0479ae18865fcafc76, type: 3}
+  - {fileID: 21300000, guid: 0301291fbddb937459ef80edf0b2fbe3, type: 3}
+  - {fileID: 21300000, guid: 25da431f0faf25e4c9336727cb238edf, type: 3}
+  - {fileID: 21300000, guid: b0a79865588e9d248bd7378730bbf9ac, type: 3}
+  - {fileID: 21300000, guid: 286399bb254bde74c93d5dd48cd25c8d, type: 3}
+  - {fileID: 21300000, guid: ec43610c04d75494295fcd209d6640a9, type: 3}
+  - {fileID: 21300000, guid: ba4f0694b507bc74b80e7a3e812faa75, type: 3}
+  - {fileID: 21300000, guid: e9a24e81dab2e034b8f311a8638de435, type: 3}

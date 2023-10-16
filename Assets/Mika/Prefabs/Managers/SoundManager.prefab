@@ -63,6 +63,7 @@ MonoBehaviour:
     volume: 0
     audioMixerGroup: {fileID: 7317145936813336584, guid: 014c337e9baea7d4d8601467f28d8ee8, type: 2}
   audioMixer: {fileID: 24100000, guid: 014c337e9baea7d4d8601467f28d8ee8, type: 2}
+  chocClip: {fileID: 8300000, guid: f087ba2c78321a44f95b7684b0315490, type: 3}
 --- !u!81 &737216281432342543
 AudioListener:
   m_ObjectHideFlags: 0

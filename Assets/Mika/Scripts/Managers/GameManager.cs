@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Mika
 {
-    public partial class GameManager : MonoBehaviour
+    public class GameManager : MonoBehaviour
     {
         #region Singleton
         public static GameManager Instance;

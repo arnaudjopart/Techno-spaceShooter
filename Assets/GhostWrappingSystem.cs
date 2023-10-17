@@ -4,6 +4,7 @@ using UnityEngine;
 public class GhostWrappingSystem : BorderTeleportation
 {
     protected Transform ghostSystem;
+    [SerializeField] protected GameObject ghostSystemPrefab;
 
     protected override void Awake()
     {
@@ -17,7 +18,12 @@ public class GhostWrappingSystem : BorderTeleportation
         // l'image actuelle
         Sprite sprite = GetComponent<SpriteRenderer>().sprite;
         // crée un gameObject servant de conteneur
-        this.ghostSystem = new GameObject("Ghost System").transform;
+        GameObject ghostWrappingSystem = GameObject.Find("GhostWrappingSystems");
+        if (ghostWrappingSystem == null)
+        {
+            ghostWrappingSystem = new GameObject("GhostWrappingSystems");
+        }
+        this.ghostSystem = Instantiate(this.ghostSystemPrefab, ghostWrappingSystem.transform.position, Quaternion.identity, ghostWrappingSystem.transform).transform;
         Vector3 pos1 = 2f * m_bounds.y * Vector3.up;
         Vector3 pos2 = 2f * m_bounds.x * Vector3.right;
         Vector3 pos3 = pos1 + pos2;
@@ -26,10 +32,9 @@ public class GhostWrappingSystem : BorderTeleportation
         // ajoute 8 images au conteneur
         for (int i = 0; i < positions.Length; i++)
         {
-            GameObject o = new("Ghost " + i);
-            o.AddComponent<SpriteRenderer>().sprite = sprite;
+            Transform o = this.ghostSystem.GetChild(i);
+            o.gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
             o.transform.position = positions[i];
-            o.transform.SetParent(this.ghostSystem.transform);
         }
     }
 

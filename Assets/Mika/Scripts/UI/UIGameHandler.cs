@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,46 +8,72 @@ namespace Mika
     [DefaultExecutionOrder(1000)]
     public class UIGameHandler : MonoBehaviour
     {
-        [Header("Pause Settings")]
+        [Header("Pannel Settings")]
         [SerializeField] private GameObject pauseMenu;
         [SerializeField] private KeyCode pauseKey = KeyCode.P;
-        [Header("Score Settings")]
-        [SerializeField] private TMP_Text scoreTxt;
-        [Header("Game Over Settings")]
         [SerializeField] private GameObject gameOverPanel;
+        [SerializeField] private GameObject gameWonPanel;
         [Header("Lives Settings")]
         [SerializeField] private GameObject lostLives;
         [SerializeField] private GameObject leftLives;
+        [Header("Score Settings")]
+        [SerializeField] private TMP_Text scoreTxt;
         [Header("Weapon Settings")]
-        [SerializeField] private Sprite weaponSprite1; // TODO scriptable objects
-        [SerializeField] private Sprite weaponSprite2;
         [SerializeField] private Image weaponIcon;
+        [SerializeField] private Color grayscaled;
 
         private void OnEnable()
         {
-            GameManager.Instance.OnScoreUpdateEvent += UpdateScore;
-            EventManager.GameOverEvent += OnGameOver;
+            GameManager.Instance.ScoreUpdateEvent += UpdateScore;
+            GameManager.Instance.GameStateChangedEvent += OnGameOver;
+            GameManager.Instance.GameStateChangedEvent += OnGameWon;
             EventManager.PlayerLifeChangedEvent += OnLifeChanged;
             EventManager.PlayerChangeWeaponEvent += OnPlayerWeaponChanged;
         }
 
         private void OnDisable()
         {
-            GameManager.Instance.OnScoreUpdateEvent -= UpdateScore;
-            EventManager.GameOverEvent -= OnGameOver;
+            GameManager.Instance.ScoreUpdateEvent -= UpdateScore;
+            GameManager.Instance.GameStateChangedEvent -= OnGameOver;
+            GameManager.Instance.GameStateChangedEvent -= OnGameWon;
             EventManager.PlayerLifeChangedEvent -= OnLifeChanged;
             EventManager.PlayerChangeWeaponEvent -= OnPlayerWeaponChanged;
         }
 
-        private void UpdateScore(int score)
+        private void Start()
         {
-            scoreTxt.text = $"{score}";
+            this.leftLives.GetComponent<Image>().sprite = MainManager.Instance.ShipModel;
+            Image image = this.lostLives.GetComponent<Image>();
+            image.sprite = MainManager.Instance.ShipModel;
+            image.color = grayscaled;
         }
 
-        private void OnGameOver()
+        private void UpdateScore(int score)
         {
-            gameOverPanel.SetActive(true);
-            Time.timeScale = 0f;
+            this.scoreTxt.text = $"{score}";
+        }
+
+        private void OnGameOver(GameStates gameState)
+        {
+            if (gameState == GameStates.GAMEOVER)
+            {
+                this.gameOverPanel.SetActive(true);
+            }
+        }
+
+        private void OnGameWon(GameStates gameState)
+        {
+            if (gameState == GameStates.WIN) {
+                this.gameWonPanel.SetActive(true);
+            }
+        }
+
+        public void NextLevel()
+        {
+            if (GameManager.Instance.NextLevel())
+            {
+                this.gameWonPanel.SetActive(false);
+            }
         }
 
         private void OnLifeChanged(int oldLife, int newLife, int maxLife)
@@ -63,9 +88,10 @@ namespace Mika
             rect.sizeDelta = sizeDelta;
         }
 
-        private void OnPlayerWeaponChanged(WeaponType type)
+        private void OnPlayerWeaponChanged(WeaponData weaponData)
         {
-            this.weaponIcon.sprite = type == WeaponType.LASER ? weaponSprite1 : weaponSprite2;
+            this.weaponIcon.sprite = weaponData.icon;
+            this.weaponIcon.color = weaponData.iconColor;
         }
 
         private void Update()

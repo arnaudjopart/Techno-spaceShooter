@@ -1,22 +1,17 @@
 using System;
+using UnityEngine;
 
 namespace Mika
 {
     public static class EventManager
     {
-        public static event Action<Enemy> EnemyDeathEvent;
-        public static event Action GameOverEvent;
+        public static event Action<Enemy, bool> EnemyDeathEvent;
         public static event Action<int, int, int> PlayerLifeChangedEvent;
-        public static event Action<WeaponType> PlayerChangeWeaponEvent;
+        public static event Action<WeaponData> PlayerChangeWeaponEvent;
 
-        public static void InvokeEnemyDeathEvent(Enemy enemy)
+        public static void InvokeEnemyDeathEvent(Enemy enemy, bool withReward)
         {
-            EnemyDeathEvent?.Invoke(enemy);
-        }
-
-        public static void InvokeGameOverEvent()
-        {
-            GameOverEvent?.Invoke();
+            EnemyDeathEvent?.Invoke(enemy, withReward);
         }
 
         public static void InvokePlayerLifeChangedEvent(int oldLife, int newLife, int maxLife)
@@ -24,14 +19,9 @@ namespace Mika
             PlayerLifeChangedEvent?.Invoke(oldLife, newLife, maxLife);
         }
 
-        public static void InvokePlayerChangeWeaponEvent(WeaponType weaponType)
+        public static void InvokePlayerChangeWeaponEvent(WeaponData weaponData)
         {
-            PlayerChangeWeaponEvent?.Invoke(weaponType);
+            PlayerChangeWeaponEvent?.Invoke(weaponData);
         }
     }
-}
-
-public enum WeaponType
-{
-    LASER, BALL
 }

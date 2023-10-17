@@ -25,12 +25,12 @@ public class PlayerShip : InputListenerBase
         
     }
 
-    public void ProcessKeyCodeDown(KeyCode space)
+    public override void ProcessKeyCodeDown(KeyCode space)
     {
         
     }
 
-    public void ProcessKeyCodeUp(KeyCode space)
+    public override void ProcessKeyCodeUp(KeyCode space)
     {
         
     }

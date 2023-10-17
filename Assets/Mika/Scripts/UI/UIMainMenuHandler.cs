@@ -7,7 +7,7 @@ namespace Mika
     [DefaultExecutionOrder(1000)]
     public class UIMainMenuHandler : MonoBehaviour
     {
-        [SerializeField] private GameObject layoutMain, layoutOptions;
+        [SerializeField] private GameObject layoutMain, layoutOptions, layoutNewGame;
         [SerializeField] private Slider masterSlider, musicSlider, ambientSlider, playerSlider, hostileSlider;
         [SerializeField] private Toggle toggleVolume;
 
@@ -45,8 +45,15 @@ namespace Mika
             layoutOptions.SetActive(true);
         }
 
+        public void OpenNewGameMenu()
+        {
+            layoutMain.SetActive(false);
+            layoutNewGame.SetActive(true);
+        }
+
         public void BackToMainMenu()
         {
+            layoutNewGame.SetActive(false);
             layoutOptions.SetActive(false);
             layoutMain.SetActive(true);
         }

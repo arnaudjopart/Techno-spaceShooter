@@ -6,9 +6,11 @@ namespace Mika
     public class Enemy : EnemyBaseClass
     {
         [SerializeField] private EnemyData enemyData;
-        protected float lifeTime = 0f;
-        public bool IsAlive { get => m_lives > 0 && this.lifeTime < this.enemyData.maxLifetime && this.gameObject.activeInHierarchy; }
-        public event Action<int, int, int> EnemyLifeChangedEvent;
+        [SerializeField] private UnitUI unitUI;
+        public float LifeTime { get; protected set; }
+        public bool IsAlive => m_lives > 0 && LifeTime < this.enemyData.maxLifetime && this.gameObject.activeInHierarchy;
+        public float lastHitTime;
+        public bool IsMouseOver { get; private set; } = false;
 
         private void Start()
         {
@@ -22,20 +24,25 @@ namespace Mika
 
         internal override void TakeDamage(int m_damagePoints)
         {
-            SoundManager.Instance.PlayChocClipAt(this.transform.position);
+            SoundManager.Instance.PlayChocClip();
 
             int beforeHitLife = GetLives();
             base.TakeDamage(m_damagePoints);
             int lostLives = beforeHitLife - GetLives();
+            this.lastHitTime = Time.time;
             if (lostLives > 0)
             {
-                EnemyLifeChangedEvent?.Invoke(beforeHitLife, GetLives(), GetMaxLives());
                 if (GetLives() <= 0)
                 {
-                    EventManager.InvokeEnemyDeathEvent(this);
-                    gameObject.SetActive(false);
+                    Die(true);
                 }
             }
+        }
+
+        public void Die(bool withReward)
+        {
+            EventManager.InvokeEnemyDeathEvent(this, withReward);
+            gameObject.SetActive(false);
         }
 
         protected virtual void Update()
@@ -44,17 +51,33 @@ namespace Mika
             {
                 return;
             }
-            lifeTime += Time.deltaTime;
-            if (lifeTime > this.enemyData.maxLifetime)
+            LifeTime += Time.deltaTime;
+            if (LifeTime > this.enemyData.maxLifetime)
             {
-                gameObject.SetActive(false);
+                this.gameObject.SetActive(false);
+                return;
+            }
+            if (!IsMouseOver)
+            {
+                if (this.lastHitTime + 1f > Time.time)
+                {
+                    EnableUnitUI();
+
+                }
+                else if (this.unitUI.gameObject.activeSelf)
+                {
+                    DisableUnitUI();
+                }
             }
         }
 
         public void ResetStates()
         {
-            this.lifeTime = 0f;
-            EnemyLifeChangedEvent?.Invoke(GetLives(), (this.m_lives = Math.Max(1, GetMaxLives())), GetMaxLives());
+            LifeTime = 0f;
+            lastHitTime = 0f;
+            int maxLives = GetMaxLives();
+            this.m_lives = Math.Max(1, maxLives);
+            DisableUnitUI();
         }
 
         public virtual int GetPointValue()
@@ -64,12 +87,35 @@ namespace Mika
 
         public int GetMaxLives()
         {
-            return this.enemyData.maxLives;
+            return this.enemyData.maxLives + (GameManager.Instance != null ? GameManager.Instance.Level / 3 : 0);
         }
 
         public int GetLives()
         {
             return this.m_lives;
+        }
+
+        private void OnMouseEnter()
+        {
+            IsMouseOver = true;
+            EnableUnitUI();
+        }
+
+        private void OnMouseExit()
+        {
+            IsMouseOver = false;
+            DisableUnitUI();
+        }
+
+        private void EnableUnitUI()
+        {
+            this.unitUI.gameObject.SetActive(true);
+            this.unitUI.UpdateLifeBar(GetLives(), GetMaxLives());
+        }
+
+        private void DisableUnitUI()
+        {
+            this.unitUI.gameObject.SetActive(false);
         }
     }
 }

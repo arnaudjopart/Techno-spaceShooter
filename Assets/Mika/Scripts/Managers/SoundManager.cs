@@ -124,7 +124,7 @@ namespace Mika
             SaveVolume("Hostile", value);
         }
 
-        private void SaveVolume(String name, float value)
+        public void SaveVolume(String name, float value)
         {
             this.audioMixer.SetFloat(name, value);
             PlayerPrefs.SetFloat($"Volume{name}", value);
@@ -156,10 +156,14 @@ namespace Mika
             return this.soundChannels.Where(c => c.name.Equals(channelName)).First();
         }
 
-        public void PlayChocClipAt(Vector3 pos)
+        public void PlayChocClip()
         {
-            float hostileVolume = Mathf.Pow(10f, GetHostileVolume() / 20);
-            AudioSource.PlayClipAtPoint(this.chocClip, this.transform.position, hostileVolume);
+            AudioSource.PlayClipAtPoint(this.chocClip, this.transform.position, ConvertDecibel(GetHostileVolume()));
+        }
+
+        private float ConvertDecibel(float db)
+        {
+            return Mathf.Pow(10f, db / 20f);
         }
     }
 
